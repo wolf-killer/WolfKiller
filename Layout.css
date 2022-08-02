@@ -1,0 +1,178 @@
+.w3-allerta { 
+	font-family: "Allerta Stencil", Sans-serif; 
+}
+body {
+	background-image: url("./image/background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed; 
+	background-size: 100% 100%;
+}
+td {
+	text-align: left;
+}
+.menuBar>i{
+	margin-right: 10px;
+}
+.info{
+	border: 3px solid blue; 
+	background-color: #28d7d7;
+	width: 100%; 
+	padding: 10px;
+	text-align: center;
+}
+#menu{
+	padding: 10px;
+	background-color: #55B1D6;
+	height: 40%;		
+	width:50%; 
+	position: absolute; 
+	z-index:10;
+}
+#menu i{
+	margin-right: 10px;
+}
+#menu button{
+	margin: 10px;
+	width: 80%;
+}
+#versionSelecter{
+	padding: 10px;
+	background-color: #55B1D6;	
+	width:80%; 
+	position: absolute; 
+	top: 5%; 
+	left: 10%;
+	z-index:99;
+}
+#versionSelecter button{
+	margin: 0px;
+	width: 100%;
+}
+#versionDiv{
+	width: -webkit-fill-available;
+}
+#logDiv{
+	background-color: #55B1D6;	
+	width:90%; 
+	padding: 10px;
+	position: absolute; 
+	top: 5%; 
+	left: 5%;
+	z-index:99;
+}
+#infoDiv{
+	background-color: #55B1D6;	
+	width:90%; 
+	padding: 20px;
+	position: absolute; 
+	top: 5%; 
+	left: 5%;
+	z-index:99;
+}
+#playerDiv{
+	width:90%; 
+	padding: 10px;
+	position: absolute; 
+	z-index: 2;
+}
+#dayActionDiv{
+	width: 80%;
+	position: absolute; 
+	z-index:99;
+}
+.closePopUp{
+	position: absolute;
+	right: 10px;
+	top: 10px;	
+}
+.playerCard{
+	position: relative; 
+	top: 0; 
+	left: 0;
+}
+.playerImg{
+	width:100%; 
+	position: relative; 
+	top: 0; 
+	left: 0;
+	border: 3px solid black;
+}
+.diedImg{
+	height: 50px;
+	width:50%;
+	z-index:2; 
+	position: absolute; 
+	right: 0; 
+	bottom: 0; 
+	display: none;
+}
+.killImg{
+	width:100%; 
+	z-index:2; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	display: none;
+}
+.actorImg{
+	position: relative; 
+	top: 0; 
+	left: 0; 
+	width: 90%;
+	height:100%;
+	border: 3px solid white;
+}
+.actorCount{
+	position: absolute;
+	right: 10px;
+	top: -10px;
+	padding-left: 4px;
+	padding-right: 4px;
+	width: 20px;
+	background-color: white;
+}
+.dayLog{
+	text-align: left;
+	width: 100%;
+	border-collapse: collapse;
+}
+.dayLog th{
+	text-align: center;
+	border: 2px dotted #2196F3;
+}
+.dayLog td{
+	border: 1px dotted #2196F3;
+}
+.confirming{
+	border: 3px solid red;
+}
+.actorCard{
+	padding: 0px;
+	position: relative; 
+	top: 0; 
+	left: 0;
+}
+.centerMenu{
+	background-color: #ffffff;
+	color: #344850;
+	padding: 5px;
+	text-align: center;
+	top: 45px;
+}
+.nightActionDivButton{
+	width: 120px;
+	border: 3px solid red;
+	background-color: #ffdddd;
+	z-index:20;
+}
+.dayActionDivButton{
+	width: 100%;
+	border: 3px solid blue;
+	background-color: #e6ffff;
+}
+.cardcol{
+	height:110px;
+}
+.playerButton{
+	font-size: 96%;
+}
