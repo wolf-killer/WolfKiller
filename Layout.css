@@ -1,7 +1,32 @@
 .w3-allerta { 
 	font-family: "Allerta Stencil", Sans-serif; 
 }
+.wolf-btn{
+	background-color: rgba(162, 255, 255, 0.7) !important;
+	color: black !important;
+	border: 1px solid rgba(0, 145, 145) !important; 
+	padding: 2px 4px !important;
+}
+#FixScreen{
+	overflow-y: auto;
+	overflow-x: hidden;
+	border: 1px solid blue; 
+}
+.PopupInfo{
+	background-color: rgba(40, 215, 215, 0.5);
+	width:90%; 
+	padding: 10px;
+	position: absolute; 
+	top: 5%; 
+	left: 5%;
+	z-index:99;
+}
+html, body{
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
 body {
+	position: relative;
 	background-image: url("./image/background.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed; 
@@ -35,22 +60,7 @@ td {
 	margin: 10px;
 	width: 80%;
 }
-#versionSelecter{
-	padding: 10px;
-	background-color: #55B1D6;	
-	width:80%; 
-	position: absolute; 
-	top: 5%; 
-	left: 10%;
-	z-index:99;
-}
-#versionSelecter button{
-	margin: 0px;
-	width: 100%;
-}
-#versionDiv{
-	width: -webkit-fill-available;
-}
+
 #logDiv{
 	background-color: #55B1D6;	
 	width:90%; 
@@ -175,4 +185,17 @@ td {
 }
 .playerButton{
 	font-size: 96%;
+}
+/*new css*/
+.td1{
+	width: 25%;
+	text-align: left!important;
+}
+.td2{
+	width: 50%;
+	text-align: center!important;
+}
+.td3{
+	width: 25%;
+	text-align: right!important;
 }

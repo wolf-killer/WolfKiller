@@ -1,14 +1,3 @@
-var submitTotalPlayer = 0;
-var totalActorArray = [];
-var godArray = []; 
-var godChinArray = [];
-var villagerArray = []; 
-var villagerChinArray = [];
-var wolfArray = []; 
-var wolfChinArray = []; 
-var versionMode;
-var alignment;
-
 var player = [null]; 
 var alivePlayer = [null];
 var godAlivePlayer = []; 
@@ -33,17 +22,7 @@ var log = "";
 var wh = 0;
 var landscape = false;
 
-$(document).ready(function(){
-	$("#versionSelecter").show();
-	console.log("Available width/height: " + screen.availWidth + "*" + screen.availHeight + " || w/h: " + screen.availWidth /screen.availHeight);
-	wh = screen.availWidth /screen.availHeight;
-	$("#allScreen").css("height", screen.availHeight-30);
-	$("#allScreen").css("width", screen.availWidth);
-	if(wh>0.7){
-		landscape = true;
-		$('input:radio[name=alignment]').filter('[value=tableAlign]').prop('checked', true);
-	}
-}); 
+
 
 $(document).on("click", '.playerButton', function(temp){
 	var playerCard = "playerCard";
@@ -115,50 +94,7 @@ $(document).on("click", '.playerButton', function(temp){
 		alert("Wrong Action");
 	}
 });
-$(document).on("click", '.actorImg', function(temp){
-	var controlActor = temp.currentTarget.name;
-	var controlActorCount = parseInt($("#actor"+controlActor+"Count").text());
-	if (controlActorCount == 0){
-		submitTotalPlayer++;
-		$("#actor"+controlActor+"Count").text(controlActorCount+1);
-		$("#actor"+controlActor+"Count").addClass("w3-pale-red");
-		$("#actor"+controlActor).addClass("w3-border-red");
-	}else if (controlActorCount == 1){
-		if(controlActor == "Villager" || controlActor == "Wolf"){
-			submitTotalPlayer++;
-			$("#actor"+controlActor+"Count").text(controlActorCount+1);
-			$("#actor"+controlActor+"Count").addClass("w3-pale-red");
-		}else{
-			submitTotalPlayer--;
-			$("#actor"+controlActor+"Count").text(controlActorCount-1);
-			$("#actor"+controlActor+"Count").removeClass("w3-pale-red");
-			$("#actor"+controlActor).removeClass("w3-border-red");
-		}
-	}else if (controlActorCount == 2){
-		if(controlActor == "Villager" || controlActor == "Wolf"){
-			submitTotalPlayer++;
-			$("#actor"+controlActor+"Count").text(controlActorCount+1);
-		}
-	}else if (controlActorCount == 3){
-		if(controlActor == "Villager"){
-			submitTotalPlayer++;
-			$("#actor"+controlActor+"Count").text(controlActorCount+1);
-		}else if (controlActor == "Wolf"){
-			submitTotalPlayer = submitTotalPlayer-controlActorCount;
-			$("#actor"+controlActor+"Count").text(0);
-			$("#actor"+controlActor).removeClass("w3-border-red");
-			$("#actor"+controlActor+"Count").removeClass("w3-pale-red");
-		}
-	}else if (controlActorCount > 3){
-		if(controlActor == "Villager"){
-			submitTotalPlayer = submitTotalPlayer-controlActorCount;
-			$("#actor"+controlActor+"Count").text(0);
-			$("#actor"+controlActor).removeClass("w3-border-red");
-			$("#actor"+controlActor+"Count").removeClass("w3-pale-red");
-		}
-	}
-	$("#submitTotalPlayer").text(submitTotalPlayer);
-});
+
 function getRandom(){
 	var randomBuffer = new Uint32Array(1);
 	window.crypto.getRandomValues(randomBuffer);
@@ -1092,119 +1028,14 @@ function closePopUp(){
 	$("#playerDiv").hide();
 	$("#dayActionDiv").hide();
 	$("#infoDiv").hide();
+	$("#adjustButtonDiv").hide();
 }
 function versionSelect(){
 	closePopUp();
 	$("#versionSelecter").show();
 }
-function selectVersion(noOfPlayer){
-	resetVersion();
-	$("#submitTotalPlayer").text(noOfPlayer);
-	if(noOfPlayer == 0){
-		return;
-	}
-	var tempArray;
-	submitTotalPlayer = noOfPlayer;
-	switch(noOfPlayer){
-		case 6:
-			$('input:radio[name=versionMode]').filter('[value=gnv]').prop('checked', true);
-			tempArray = array6;
-			break;
-		case 7:
-			tempArray = array7;
-			break;
-		case 8:
-			tempArray = array8;
-			break;
-		case 9:
-			tempArray = array9;
-			break;
-		case 10: 
-			tempArray = array10;
-			break;
-		case 11: 
-			tempArray = array11;
-			break;
-		case 12: 
-			tempArray = array12;
-			break;
-		default:
-			console.log(noOfPlayer);
-			break;
-	}
 
-	for(var i=0; i<tempArray.length; i++){
-		var controlActor = tempArray[i];
-		var lastChar = controlActor.substring(controlActor.length - 1);
-		if(lastChar == 1 || lastChar == 2 || lastChar == 3){
-			controlActor = controlActor.substring(0, controlActor.length-1);
-		}
-		var controlActorCount = parseInt($("#actor"+controlActor+"Count").text());
-		$("#actor"+controlActor+"Count").text(controlActorCount+1);
-		$("#actor"+controlActor+"Count").addClass("w3-pale-red");
-		$("#actor"+controlActor).addClass("w3-border-red");
-	}
-}
-function submitVersion(){
-	var prefix = "actor";
-	var postfix = "Count";
-	for(var i=0; i<$(".actorCount").length; i++){
-		var tempActor = $(".actorCount")[i].id;
-		var tempActorCount = $(".actorCount")[i].innerText;
-		var prefixPosition = tempActor.indexOf(prefix);
-		var postfixPosition = tempActor.indexOf(postfix);
-		tempActor = tempActor.slice(prefixPosition+prefix.length, postfixPosition)
-		if(tempActor.length > 0 && tempActorCount > 0){
-			if(allGod.includes(tempActor)){
-				for(var j=0; j<tempActorCount; j++){
-					totalActorArray.push(tempActor+(j>0?j:"")); 
-					godArray.push(tempActor+(j>0?j:"")); 
-					godChinArray.push(translate(tempActor)+(j>0?"["+translate(j)+"]":""));
-				}	
-			}else if(allVillager.includes(tempActor)){
-				for(var j=0; j<tempActorCount; j++){
-					totalActorArray.push(tempActor+(j>0?j:"")); 
-					villagerArray.push(tempActor+(j>0?j:""));
-					villagerChinArray.push(translate(tempActor)+(j>0?"["+translate(j)+"]":""));
-				}					
-			}else if(allWolf.includes(tempActor)){
-				for(var j=0; j<tempActorCount; j++){
-					totalActorArray.push(tempActor+(j>0?j:"")); 
-					wolfArray.push(tempActor+(j>0?j:"")); 
-					wolfChinArray.push(translate(tempActor)+(j>0?"["+translate(j)+"]":"")); 
-				}
-			}
-		}
-	}
-	if(!(wolfArray.length > 0 && villagerArray.length > 0 && godArray.length > 0) || totalActorArray.length < 6){
-		resetVersion();
-		alert("最少六名玩家\r\n並且每個陣營最少要有一名玩家");	
-		return;
-	}
-	versionMode = $("input:radio[name=versionMode]:checked").val();
-	versionLog += "版本：<br/>玩家："+translate(submitTotalPlayer)+"人<br/>屠邊："+translate(versionMode)+"<br/>角色分佈：";
-	versionLog += "<table class='w3-topbar w3-bottombar w3-border-blue w3-pale-blue' style='width:100%'>";
-	versionLog += "<tr><td style='width:40px;'>神職</td><td>"+godChinArray.toString()+"</td></tr>";
-	versionLog += "<tr><td>平民</td><td>"+villagerChinArray.toString()+"</td></tr>";
-	versionLog += "<tr><td>狼人</td><td>"+wolfChinArray.toString()+"</td></tr>";
-	versionLog += "</table><br/>";
-	$("#log").html(versionLog);
-	closePopUp();
-	startNewGame();
-	showVersion();
-}
-function resetVersion(){
-	submitTotalPlayer = 0;
-	$(".actorCount").text("0");
-	$(".actorImg").removeClass("w3-border-red");
-	$(".actorCount").removeClass("w3-pale-red");
-	totalActorArray = [];
-	godArray = [];
-	villagerArray = [];
-	wolfArray = [];
-	$('input:radio[name=versionMode]').filter('[value=gonly]').prop('checked', true);
-	versionMode = "";
-}
+
 function showVersion() {
 	alignment = $("input:radio[name=alignment]:checked").val();
 	$("#versionDiv").html("");
@@ -1342,3 +1173,4 @@ function showInfo(){
 	closePopUp();
 	$("#infoDiv").show();
 }
+
