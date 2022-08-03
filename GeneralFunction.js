@@ -13,3 +13,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
     return false;
 };
+
+function closeHiddenPopupInfo(){
+	$(".HiddenPopupInfo").css("display","none");
+}

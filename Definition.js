@@ -10,6 +10,20 @@ var allActor = ["Wolf","WolfKing","SecretWolf","GhostWolf","Seer","Witch","Knigh
 var allGod = ["Seer","Witch","Knight","Hunter","Guard","Bear","Idiot"];
 var allVillager = ["Villager"];
 var allWolf = ["Wolf","WolfKing","SecretWolf","GhostWolf"];
+var allActorRule = {
+	"Wolf": "黑夜可以睜眼與隊友見面並討論戰術與選擇殺害對象。",
+	"WolfKing": "死亡時可以開槍帶走一名玩家。",
+	"SecretWolf": "查驗均不認定其為狼人，但與騎士決鬥則雪狼死亡。",
+	"GhostWolf": "具備一次性反傷技能",
+	"Seer": "每夜可以查驗一位存活玩家。",
+	"Witch": "擁有一瓶解藥和一瓶毒藥。",
+	"Knight": "白天發言階段任意時候可以翻牌選擇與一名玩家決鬥。如對方是狼人則對方即時出局且不能發動技能，並直接進入夜晚；</br>如對方是好人則騎士以死謝罪，繼續白天流程。",
+	"Hunter": "淘汰時可以公布角色牌發動技能開槍帶走一位玩家。",
+	"Guard": "每晚可以守護一名玩家免受狼人殺害，可以守護自己，但不能連續兩晚守護同一人。",
+	"Bear": "每晚，熊左右兩位玩家當中若有至少有一個狼人，則會於隔天早上咆哮。",
+	"Idiot": "若白天放逐公投中被投出，可翻開角色牌以免疫該次放逐，但在之後的放逐公投中失去投票權利。狼人無須追刀白痴。",
+	"Villager": "沒有特殊技能，黑夜階段全程閉眼。"
+};
 
 var testAudio = new Audio('./sound/Pikachu.mp3'); 
 var bearGrowling = new Audio('./sound/Pikachu.mp3'); 

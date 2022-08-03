@@ -19,7 +19,29 @@
 	position: absolute; 
 	top: 5%; 
 	left: 5%;
+	z-index:50;
+}
+.HiddenPopupInfo{
+	display: none; /* Hidden by default */
+	position: fixed;
+	background-color: rgba(40, 215, 215, 1);
+	width:90%; 
+	padding: 10px;
+	top: 10%; 
+	left: 5%;
 	z-index:99;
+}
+.HiddenPopupInfo-S{
+	left: 25% !important; 
+	width:50% !important; 
+}
+.HiddenPopupInfo-M{
+	left: 15% !important; 
+	width:70% !important; 
+}
+.HiddenPopupInfo-L{
+	left: 5% !important; 
+	width:90% !important; 
 }
 html, body{
 	overflow-x: hidden;
@@ -199,3 +221,4 @@ td {
 	width: 25%;
 	text-align: right!important;
 }
+

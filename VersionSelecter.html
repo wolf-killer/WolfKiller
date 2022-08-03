@@ -24,7 +24,7 @@
 		<div id="versionSelecter" class="PopupInfo w3-container w3-center w3-round-xxlarge" style="">
 			<div class="w3-row w3-margin-top" style=""> 
 				<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"> 
-					好人陣營<i class="bi bi-info-circle" style="margin-left: 2px;"></i>
+					好人陣營<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('God')"></i>
 				</div>
 				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
 					<img id="actorVillager" class="actorImg" src="./image/actor/Villager.png" name="Villager">
@@ -59,7 +59,7 @@
 					<p id="actorIdiotCount" name="actorIdiotCount" class="actorCount w3-border w3-round-xxlarge">0</p>
 				</div>
 				<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
-						狼人陣營<i class="bi bi-info-circle" style="margin-left: 2px;"></i>
+						狼人陣營<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('Wolf')"></i>
 				</div>
 				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
 					<img id="actorWolf" class="actorImg" src="./image/actor/Wolf.png" name="Wolf">
@@ -182,6 +182,11 @@
 					(<span id="submitTotalPlayer" class="">0</span>)
 				</button>
 			</div>
+		</div>
+		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-round-xxlarge">
+			<i class="closePopUp bi bi-x" onclick="closeHiddenPopupInfo()"></i>
+			<table id="actorRuleInfo" class="w3-tiny" style=""> 
+			</table>
 		</div>
 	</div>
 </body> 
@@ -375,7 +380,34 @@ function resetVersion(){
 	$('input:radio[name=versionMode]').filter('[value=gonly]').prop('checked', true);
 	versionMode = "";
 }
-
+function showHiddenPopupInfo(input){
+	$("#actorRuleInfo").html("");
+	var tempActorList = [];
+	if(input == "God"){
+		tempActorList = allGod;
+	}else if(input == "Wolf"){
+		tempActorList = allWolf;
+	}else{
+		tempActorList.push(input);
+	}
+	
+	for(var i=0; i<tempActorList.length; i++){
+		var tempActor = tempActorList[i];
+		$("#actorRuleInfo").append( "<tr> " +
+									"	<td width='15%'>" +
+									"		<img class='actorImg' src='./image/actor/"+ tempActorList[i] +".png'/> " +
+									"	</td>" +
+									"	<td width='20%'>" + 
+									"		<span class='actorName' class=''>"+ translate(tempActorList[i])+"</span>" + 
+									"	</td>" + 
+									"	<td width='65%'>" + 
+									"		<span class='actorName' class=''>"+allActorRule[tempActorList[i]] +"</span>" + 
+									"	</td>" +
+									"</tr>");	
+	}
+	
+	$("#actorRuleDiv").css("display","block");
+}
 
 function getVersionSelecter(){
 
