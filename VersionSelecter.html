@@ -177,16 +177,18 @@
 				</div>
 			</div>
 			<div class="w3-container w3-center w3-col-middle">
-				<button onclick="submitVersion()" style="width:50%">
-					Save
-					(<span id="submitTotalPlayer" class="">0</span>)
+				<button class="wolf-btn w3-btn w3-round-large" onclick="submitVersion()">
+					開始遊戲(<span id="submitTotalPlayer" class="">0</span>)
 				</button>
 			</div>
 		</div>
-		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-round-xxlarge">
+		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge">
 			<i class="closePopUp bi bi-x" onclick="closeHiddenPopupInfo()"></i>
-			<table id="actorRuleInfo" class="w3-tiny" style=""> 
+			<table id="actorRuleInfo" class="w3-table w3-bordered w3-tiny" style=""> 
 			</table>
+			<button class="wolf-btn w3-btn w3-round-large" onclick="closeHiddenPopupInfo()">
+				關閉
+			</button>
 		</div>
 	</div>
 </body> 
@@ -394,14 +396,14 @@ function showHiddenPopupInfo(input){
 	for(var i=0; i<tempActorList.length; i++){
 		var tempActor = tempActorList[i];
 		$("#actorRuleInfo").append( "<tr> " +
-									"	<td width='15%'>" +
+									"	<td class='w3-col s2 m2 l1' style='float: none; vertical-align: middle; padding: 2px;'>" +
 									"		<img class='actorImg' src='./image/actor/"+ tempActorList[i] +".png'/> " +
 									"	</td>" +
-									"	<td width='20%'>" + 
+									"	<td class='w3-col s3 m2 l2' style='float: none; vertical-align: middle; padding: 2px;'>" + 
 									"		<span class='actorName' class=''>"+ translate(tempActorList[i])+"</span>" + 
 									"	</td>" + 
-									"	<td width='65%'>" + 
-									"		<span class='actorName' class=''>"+allActorRule[tempActorList[i]] +"</span>" + 
+									"	<td class='w3-col s7 m8 l9' style='float: none; vertical-align: middle; padding: 2px;'>" + 
+									"		<span class='actorRule' class=''>"+allActorRule[tempActorList[i]] +"</span>" + 
 									"	</td>" +
 									"</tr>");	
 	}
