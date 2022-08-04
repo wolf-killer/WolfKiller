@@ -1,5 +1,14 @@
-.w3-allerta { 
-	font-family: "Allerta Stencil", Sans-serif; 
+html, body{
+	overflow-x: hidden;
+	overflow-y: hidden;
+	font-family: 'cwTeXYen', 'Noto Sans TC', '微軟正黑體', '黑體-繁', sans-serif !important;
+}
+body {
+	position: relative;
+	background-image: url("./image/background.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed; 
+	background-size: 100% 100%;
 }
 .wolf-btn{
 	background-color: rgba(162, 255, 255, 0.7) !important;
@@ -7,17 +16,25 @@
 	border: 1px solid rgba(0, 145, 145) !important; 
 	padding: 2px 4px !important;
 }
+.wolf-btn-selected{
+	background-color: rgba(162, 255, 255, 0.7) !important;
+	color: black !important;
+	border: 2px solid rgba(145, 0, 0) !important; 
+	padding: 2px 4px !important;
+}
 #FixScreen{
-	overflow-y: auto;
+	overflow-y: hidden;
 	overflow-x: hidden;
 	border: 1px solid blue; 
 }
 .PopupInfo{
 	background-color: rgba(40, 215, 215, 0.5);
 	width:90%; 
-	padding: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 10px !important;
 	position: absolute; 
-	top: 5%; 
+	top: 5px; 
 	left: 5%;
 	z-index:50;
 }
@@ -26,7 +43,7 @@
 	position: relative;
 	background-color: rgba(40, 215, 215, 1);
 	width:90%; 
-	padding: 10px;
+	padding: 10px !important;
 	top: 10%; 
 	left: 5%;
 	z-index:99;
@@ -43,17 +60,7 @@
 	left: 5% !important; 
 	width:90% !important; 
 }
-html, body{
-	overflow-x: hidden;
-	overflow-y: hidden;
-}
-body {
-	position: relative;
-	background-image: url("./image/background.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed; 
-	background-size: 100% 100%;
-}
+
 td {
 	text-align: left;
 }
@@ -211,14 +218,13 @@ td {
 /*new css*/
 .td1{
 	width: 25%;
-	text-align: left!important;
+	text-align: left !important;
 }
 .td2{
 	width: 50%;
-	text-align: center!important;
+	text-align: center !important;
 }
 .td3{
 	width: 25%;
-	text-align: right!important;
+	text-align: right !important;
 }
-
