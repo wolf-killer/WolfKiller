@@ -22,6 +22,12 @@ body {
 	border: 2px solid rgba(145, 0, 0) !important; 
 	padding: 2px 4px !important;
 }
+.wolf-btn-close{
+	position: absolute;
+	right: 10px;
+	top: 10px;	
+	z-index:99;
+}
 .wolf-margin-x{
 	margin-left: 16px !important;
 	margin-right: 16px !important;
@@ -47,7 +53,8 @@ body {
 	overflow-y: auto;
 	overflow-x: hidden;
 	position: relative;
-	background-color: rgba(40, 215, 215, 1);
+	background-color: rgba(210, 255, 255, 0.98);
+    border: 3px solid blue;
 	width:90%; 
 	padding: 10px !important;
 	top: 15px; 
@@ -81,7 +88,6 @@ body {
 	background-color: rgba(210, 255, 255, 0.95);
 	border: 3px solid blue;
 }
-
 td {
 	text-align: left;
 }
@@ -110,7 +116,6 @@ td {
 	margin: 10px;
 	width: 80%;
 }
-
 #logDiv{
 	background-color: #55B1D6;	
 	width:90%; 
@@ -139,11 +144,6 @@ td {
 	width: 80%;
 	position: absolute; 
 	z-index:99;
-}
-.closePopUp{
-	position: absolute;
-	right: 10px;
-	top: 10px;	
 }
 .playerCard{
 	position: relative; 

@@ -14,7 +14,7 @@ var chinese = {
 	"Seer":"預言家", 
 	"Witch":"女巫", 
 	"Knight":"騎士", 
-	"Hunter":"猎人",
+	"Hunter":"獵人",
 	"Guard":"守衛",
 	"Bear":"熊",
 	"DemonHunter":"猎魔人",

@@ -103,17 +103,18 @@
 			<div id="VictoryConditionTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-margin-top"
 				 ondblclick="extandSection($(this).find('i'), 'VictoryConditionSection')">
 				勝利條件
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showAlert('info', victoryCondition.title, victoryCondition.content);"></i>
 				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'VictoryConditionSection')"></i>
 			</div>
 			<div id="VictoryConditionSection" class="w3-container w3-row w3-show" style=""> 
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gnv')">
-					<button id="gnv" class="wolf-btn w3-btn w3-block w3-round-large versionMode">
-						屠城
-					</button>
-				</div>
 				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gonly')">
 					<button id="gonly" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large versionMode">
 						屠邊
+					</button>
+				</div>
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gnv')">
+					<button id="gnv" class="wolf-btn w3-btn w3-block w3-round-large versionMode">
+						屠城
 					</button>
 				</div>
 			</div>
@@ -162,7 +163,7 @@
 			</div>
 		</div>
 		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-L w3-container w3-center w3-round-xxlarge">
-			<i class="closePopUp bi bi-x" onclick="closeHiddenPopupInfo()"></i>
+			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="closeHiddenPopupInfo()"></i>
 			<div class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
 				角色簡介
 			</div>
@@ -173,7 +174,7 @@
 			</button>
 		</div>
 		<div id="alertDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge">
-			<i class="closePopUp bi bi-x" onclick="closeHiddenPopupInfo()"></i>
+			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="closeHiddenPopupInfo()"></i>
 			<div id="alertTitle" class="w3-container w3-large"></div>
 			<div id="alertContent" class="w3-container w3-medium" style=""></div>
 			<div id="alertAction" class="w3-container w3-medium" style=""></div>
@@ -264,7 +265,7 @@ $(document).on("click", '.actorImg', function(temp){
 	if(submitTotalPlayer > 12){
 		updateBtn('windowMode', 'tableAlign');
 	}
-	if(submitTotalPlayer > 15){
+	if(submitTotalPlayer > 20){
 		showAlert('alert', '人數錯誤','暫未支援多於' + translate(submitTotalPlayer-1) + '人局');
 		selectVersion(0);
 	}
