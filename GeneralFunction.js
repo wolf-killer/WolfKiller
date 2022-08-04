@@ -37,3 +37,16 @@ function updateBtn(mode, version){
 		windowMode = version;
 	}
 }
+function showAlert(type, title, content){
+	var icon;
+	if(type == "alert"){
+		icon = "bi-exclamation-diamond-fill";
+	}else if(type == "question"){
+		icon = "bi-question-diamond-fill";
+	}else{
+		icon = "bi-bookmark-star-fill"; 
+	}
+	$("#alertTitle").html("<i class='bi " + icon + " w3-text-red'></i>" + title);
+	$("#alertContent").html(content);
+	$("#alertDiv").css("display","block");
+}
