@@ -9,7 +9,8 @@
   <link rel="icon" type="image/x-icon" href="./image/WebIcon.png">
   <link rel="stylesheet" type="text/css" href="./Layout.css"/>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
   <!--icon list: https://icons.getbootstrap.com/ -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
@@ -19,164 +20,132 @@
   <script src="./Translate.js"></script>
   <!--<script src="./Function.js"></script>-->
 </head> 
-<body class="w3-allerta" style="overflow-x: hidden; overflow-y: hidden;"> 
+<body> 
 	<div id="FixScreen" class="w3-display-container"> 
 		<div id="versionSelecter" class="PopupInfo w3-container w3-center w3-round-xxlarge" style="">
-			<div class="w3-row w3-margin-top" style=""> 
-				<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"> 
-					好人陣營<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('God')"></i>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorVillager" class="actorImg" src="./image/actor/Villager.png" name="Villager">
-					<p id="actorVillagerCount" name="actorVillagerCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorSeer" class="actorImg" src="./image/actor/Seer.png" name="Seer">
-					<p id="actorSeerCount" name="actorSeerCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorWitch" class="actorImg" src="./image/actor/Witch.png" name="Witch">
-					<p id="actorWitchCount" name="actorWitchCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorHunter" class="actorImg" src="./image/actor/Hunter.png" name="Hunter">
-					<p id="actorHunterCount" name="actorHunterCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorKnight" class="actorImg" src="./image/actor/Knight.png" name="Knight">
-					<p id="actorKnightCount" name="actorKnightCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorGuard" class="actorImg" src="./image/actor/Guard.png" name="Guard">
-					<p id="actorGuardCount" name="actorGuardCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorBear" class="actorImg" src="./image/actor/Bear.png" name="Bear">
-					<p id="actorBearCount" name="actorBearCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorIdiot" class="actorImg" src="./image/actor/Idiot.png" name="Idiot">
-					<p id="actorIdiotCount" name="actorIdiotCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
-						狼人陣營<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('Wolf')"></i>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorWolf" class="actorImg" src="./image/actor/Wolf.png" name="Wolf">
-					<p id="actorWolfCount" name="actorWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorWolfKing" class="actorImg" src="./image/actor/WolfKing.png" name="WolfKing"><br/>
-					<p id="actorWolfKingCount" name="actorWolfKingCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorSecretWolf" class="actorImg" src="./image/actor/SecretWolf.png" name="SecretWolf"><br/>
-					<p id="actorSecretWolfCount" name="actorSecretWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorGhostWolf" class="actorImg" src="./image/actor/GhostWolf.png" name="GhostWolf">
-					<p id="actorGhostWolfCount" name="actorGhostWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<!--
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorPrettyWolf" class="actorImg" src="./image/actor/PrettyWolf.png" name="PrettyWolf">
-					<p id="actorPrettyWolfCount" name="actorPrettyWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorStoneWolf" class="actorImg" src="./image/actor/StoneWolf.png" name="StoneWolf"><br/>
-					<p id="actorStoneWolfCount" name="actorStoneWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorBloodWolf" class="actorImg" src="./image/actor/BloodWolf.png" name="BloodWolf"><br/>
-					<p id="actorBloodWolfCount" name="actorBloodWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				<div class="actorCard w3-container s3 m3 l2 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<img id="actorWhiteWolf" class="actorImg" src="./image/actor/WhiteWolf.png" name="WhiteWolf"><br/>
-					<p id="actorWhiteWolfCount" name="actorWhiteWolfCount" class="actorCount w3-border w3-round-xxlarge">0</p>
-				</div>
-				-->
+			<div id="defaultVersionTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-margin-top">
+				預設組合
+				<i class="bi bi-caret-down-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'defaultVersion')"></i>
 			</div>
-			<br/>
-			<div id="defaultVersion" class="w3-row" style="width:100%"> 
-				<div class="s3 m3 l2 w3-col w3-left-align w3-col-middle" onclick="selectVersion(0)">
-						預設組合：
-				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(6)">
+			<div id="defaultVersion" class="w3-container w3-row-padding w3-stretch w3-hide w3-tiny"> 
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(6)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 6
 					</button>
 				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(7)">
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(7)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 7
 					</button>
 				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(8)">
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(8)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 8
 					</button>
 				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(9)">
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(9)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 9
 					</button>
 				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(10)">
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(10)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 10
 					</button>
 				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(11)">
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(11)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 11
 					</button>
 				</div>
-				<div class="s3 m3 l2 w3-col w3-center w3-col-middle" onclick="selectVersion(12)">
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(12)">
 					<button class="wolf-btn w3-btn w3-block w3-round-large">
 						<i class="bi bi-person"></i>x 12
 					</button>
 				</div>
-			</div>
-			<div id="otherRule" class="w3-row w3-margin-top" style=""> 
-				<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"> 
-					勝利條件
-				</div>
-				<div class="w3-container s6 m6 l6 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<input type="radio" id="gnv" name="versionMode" value="gnv">
-					屠城 
-				</div>
-				<div class="w3-container s6 m6 l6 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<input type="radio" id="gonly" name="versionMode" value="gonly" checked>
-					屠邊
-				</div>
-				<!--<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"> 
-					其他規則
-				</div>
-				<div class="w3-container s6 m6 l6 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<input type="radio" id="tableAlign" name="alignment" value="tableAlign">
-					表格形式
-					<i class="bi bi-grid-3x3"></i>
-				</div>
-				<div class="w3-container s6 m6 l6 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<input type="radio" id="lrAlign" name="alignment" value="lrAlign" checked>
-					左右分隔
-					<i class="bi bi-distribute-horizontal"></i>
-				</div>-->
-				<div class="w3-container s12 m12 l12 w3-col w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"> 
-					畫面形式
-				</div>
-				<div class="w3-container s6 m6 l6 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<input type="radio" id="tableAlign" name="alignment" value="tableAlign">
-					表格形式
-					<i class="bi bi-grid-3x3"></i>
-				</div>
-				<div class="w3-container s6 m6 l6 w3-col w3-center w3-col-middle" style="padding: 0px;">
-					<input type="radio" id="lrAlign" name="alignment" value="lrAlign" checked>
-					左右分隔
-					<i class="bi bi-distribute-horizontal"></i>
+				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(0)">
+					<button class="wolf-btn w3-btn w3-block w3-round-large">
+						重設
+					</button>
 				</div>
 			</div>
-			<div class="w3-container w3-center w3-col-middle">
+			
+			<div id="VillagerActorTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+				平民陣營
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('Villager')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'VillagerActorList')"></i>
+			</div>
+			<div id="VillagerActorList" class="w3-container w3-row w3-show" style=""> 
+			</div>
+			
+			<div id="GodActorTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+				神職陣營
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('God')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'GodActorList')"></i>
+			</div>
+			<div id="GodActorList" class="w3-container w3-row w3-show" style="">
+			</div>
+			
+			<div id="WolfActorTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+				狼人陣營
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('Wolf')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'WolfActorList')"></i>
+			</div>
+			<div id="WolfActorList" class="w3-container w3-row w3-show" style=""> 
+			</div>
+			
+			<div id="VictoryConditionTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-margin-top">
+				勝利條件
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'VictoryConditionList')"></i>
+			</div>
+			<div id="VictoryConditionList" class="w3-container w3-row w3-show" style=""> 
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gnv')">
+					<button id="gnv" class="wolf-btn w3-btn w3-block w3-round-large versionMode">
+						屠城
+					</button>
+				</div>
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gonly')">
+					<button id="gonly" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large versionMode">
+						屠邊
+					</button>
+				</div>
+			</div>
+			
+			<div id="WindowConditionTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+				畫面形式
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'WindowConditionList')"></i>
+			</div>
+			<div id="WindowConditionList" class="w3-container w3-row w3-show" style=""> 
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('windowMode', 'tableAlign')">
+					<button id="tableAlign" class="wolf-btn w3-btn w3-block w3-round-large windowMode">
+						表格形式<i class="bi bi-grid-3x3"></i>
+					</button>
+				</div>
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('windowMode', 'lrAlign')">
+					<button id="lrAlign" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large windowMode">
+						左右分隔<i class="bi bi-distribute-horizontal"></i>
+					</button>
+				</div>
+			</div>
+<!--
+			<div id="OtherRuleTitle" class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+				其他規則
+				<i class="bi bi-caret-down-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'OtherRuleList')"></i>
+			</div>
+			<div id="OtherRuleList" class="w3-container w3-row w3-hide" style=""> 
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('suicideMode', 'suicideModeYes')">
+					<button id="suicideModeYes" class="wolf-btn w3-btn w3-block w3-round-large suicideMode">
+						<B>可</B>自刀
+					</button>
+				</div>
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('suicideMode', 'suicideModeNo')">
+					<button id="suicideModeNo" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large suicideMode">
+						<B>不可</B>自刀
+					</button>
+				</div>
+			</div>
+-->
+			<div class="w3-container w3-center w3-col-middle w3-margin-top">
 				<button class="wolf-btn w3-btn w3-round-large" onclick="submitVersion()">
 					開始遊戲(<span id="submitTotalPlayer" class="">0</span>)
 				</button>
@@ -184,7 +153,7 @@
 		</div>
 		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge">
 			<i class="closePopUp bi bi-x" onclick="closeHiddenPopupInfo()"></i>
-			<table id="actorRuleInfo" class="w3-table w3-bordered w3-tiny" style=""> 
+			<table id="actorRuleInfo" class="w3-table w3-bordered w3-small" style=""> 
 			</table>
 			<button class="wolf-btn w3-btn w3-round-large" onclick="closeHiddenPopupInfo()">
 				關閉
@@ -206,7 +175,8 @@ var villagerArray = [];
 var villagerChinArray = [];
 var wolfArray = []; 
 var wolfChinArray = []; 
-var versionMode;
+var versionMode = 'gonly';
+var windowMode = 'lrAlign';
 var alignment;
 
 $(document).ready(function(){
@@ -218,14 +188,15 @@ $(document).ready(function(){
 						document.documentElement.scrollHeight;
 	$("#FixScreen").css("height", setHeight);
 	$("#FixScreen").css("width", setWidth);
+	$(".PopupInfo").css("height", setHeight-10);
 	wh = setWidth / setHeight;
 	if(wh>0.7){
 		landscape = true;
-		$('input:radio[name=alignment]').filter('[value=tableAlign]').prop('checked', true);
+		updateBtn('windowMode', 'tableAlign');
 	}
-	getVersionSelecter();
+	getActorList();
+	
 }); 
-
 $(document).on("click", '.actorImg', function(temp){
 	var controlActor = temp.currentTarget.name;
 	var controlActorCount = parseInt($("#actor"+controlActor+"Count").text());
@@ -270,9 +241,32 @@ $(document).on("click", '.actorImg', function(temp){
 	}
 	$("#submitTotalPlayer").text(submitTotalPlayer);
 	if(submitTotalPlayer > 12){
-		$('input:radio[name=alignment]').filter('[value=tableAlign]').prop('checked', true);
+		updateBtn('windowMode', 'tableAlign');
 	}
 });
+function getActorList(){
+	$("#VillagerActorList").html("");
+	$("#GodActorList").html("");
+	$("#WolfActorList").html("");
+	for(var i=0; i<allVillager.length; i++){
+		$("#VillagerActorList").append( 	"<div class='actorCard w3-container s3 m2 l1 w3-col w3-center w3-col-middle' style='padding: 0px;'>" + 
+											"	<img id='actor"+ allVillager[i] +"' class='actorImg' src='./image/actor/"+ allVillager[i] +".png' name='"+ allVillager[i] +"'> " +
+											"	<p id='actor"+ allVillager[i] +"Count' name='actor"+ allVillager[i] +"Count' class='actorCount w3-border w3-round-xxlarge'>0</p>" +
+											"</div>");	
+	}
+	for(var i=0; i<allGod.length; i++){
+		$("#GodActorList").append( 	"<div class='actorCard w3-container s3 m2 l1 w3-col w3-center w3-col-middle' style='padding: 0px;'>" + 
+											"	<img id='actor"+ allGod[i] +"' class='actorImg' src='./image/actor/"+ allGod[i] +".png' name='"+ allGod[i] +"'> " +
+											"	<p id='actor"+ allGod[i] +"Count' name='actor"+ allGod[i] +"Count' class='actorCount w3-border w3-round-xxlarge'>0</p>" +
+											"</div>");	
+	}
+	for(var i=0; i<allWolf.length; i++){
+		$("#WolfActorList").append( 	"<div class='actorCard w3-container s3 m2 l1 w3-col w3-center w3-col-middle' style='padding: 0px;'>" + 
+											"	<img id='actor"+ allWolf[i] +"' class='actorImg' src='./image/actor/"+ allWolf[i] +".png' name='"+ allWolf[i] +"'> " +
+											"	<p id='actor"+ allWolf[i] +"Count' name='actor"+ allWolf[i] +"Count' class='actorCount w3-border w3-round-xxlarge'>0</p>" +
+											"</div>");	
+	}
+}
 function selectVersion(noOfPlayer){
 	resetVersion();
 	$("#submitTotalPlayer").text(noOfPlayer);
@@ -283,25 +277,31 @@ function selectVersion(noOfPlayer){
 	submitTotalPlayer = noOfPlayer;
 	switch(noOfPlayer){
 		case 6:
-			$('input:radio[name=versionMode]').filter('[value=gnv]').prop('checked', true);
+			updateBtn('versionMode', 'gnv');
 			tempArray = array6;
 			break;
 		case 7:
+			updateBtn('versionMode', 'gonly');
 			tempArray = array7;
 			break;
 		case 8:
+			updateBtn('versionMode', 'gonly');
 			tempArray = array8;
 			break;
 		case 9:
+			updateBtn('versionMode', 'gonly');
 			tempArray = array9;
 			break;
 		case 10: 
+			updateBtn('versionMode', 'gonly');
 			tempArray = array10;
 			break;
 		case 11: 
+			updateBtn('versionMode', 'gonly');
 			tempArray = array11;
 			break;
 		case 12: 
+			updateBtn('versionMode', 'gonly');
 			tempArray = array12;
 			break;
 		default:
@@ -357,7 +357,8 @@ function submitVersion(){
 		alert("最少六名玩家\r\n並且每個陣營最少要有一名玩家");	
 		return;
 	}
-	versionMode = $("input:radio[name=versionMode]:checked").val();
+	
+	console.log(versionMode);
 	/*versionLog += "版本：<br/>玩家："+translate(submitTotalPlayer)+"人<br/>屠邊："+translate(versionMode)+"<br/>角色分佈：";
 	versionLog += "<table class='w3-topbar w3-bottombar w3-border-blue w3-pale-blue' style='width:100%'>";
 	versionLog += "<tr><td style='width:40px;'>神職</td><td>"+godChinArray.toString()+"</td></tr>";
@@ -379,8 +380,7 @@ function resetVersion(){
 	godArray = [];
 	villagerArray = [];
 	wolfArray = [];
-	$('input:radio[name=versionMode]').filter('[value=gonly]').prop('checked', true);
-	versionMode = "";
+	updateBtn('versionMode','gonly');
 }
 function showHiddenPopupInfo(input){
 	$("#actorRuleInfo").html("");
@@ -394,27 +394,20 @@ function showHiddenPopupInfo(input){
 	}
 	
 	for(var i=0; i<tempActorList.length; i++){
-		var tempActor = tempActorList[i];
-		$("#actorRuleInfo").append( "<tr> " +
-									"	<td class='w3-col s2 m2 l1' style='float: none; vertical-align: middle; padding: 2px;'>" +
-									"		<img class='actorImg' src='./image/actor/"+ tempActorList[i] +".png'/> " +
-									"	</td>" +
-									"	<td class='w3-col s3 m2 l2' style='float: none; vertical-align: middle; padding: 2px;'>" + 
-									"		<span class='actorName' class=''>"+ translate(tempActorList[i])+"</span>" + 
-									"	</td>" + 
-									"	<td class='w3-col s7 m8 l9' style='float: none; vertical-align: middle; padding: 2px;'>" + 
-									"		<span class='actorRule' class=''>"+allActorRule[tempActorList[i]] +"</span>" + 
-									"	</td>" +
-									"</tr>");	
+		$("#actorRuleInfo").append( 	"<tr> " +
+										"	<td class='w3-col s2 m2 l1' style='float: none; vertical-align: middle; padding: 2px;'>" +
+										"		<img class='actorImg' src='./image/actor/"+ tempActorList[i] +".png'/> " +
+										"	</td>" +
+										"	<td class='w3-col s3 m2 l2' style='float: none; vertical-align: middle; padding: 2px;'>" + 
+										"		<span class='actorName' class=''>"+ translate(tempActorList[i])+"</span>" + 
+										"	</td>" + 
+										"	<td class='w3-col s7 m8 l9' style='float: none; vertical-align: middle; padding: 2px;'>" + 
+										"		<span class='actorRule' class=''>"+allActorRule[tempActorList[i]] +"</span>" + 
+										"	</td>" +
+										"</tr>");	
 	}
-	
 	$("#actorRuleDiv").css("display","block");
 }
-
-function getVersionSelecter(){
-
-}
-
 function goPage(pageName){
 	path = 	"./WolfKiller.html";
 	path += "?setWidth="+setWidth;
