@@ -1,4 +1,3 @@
-/*General Function*/
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -13,7 +12,28 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
     return false;
 };
-
 function closeHiddenPopupInfo(){
 	$(".HiddenPopupInfo").css("display","none");
+}
+function extandSection(icon, sectionName){
+	if($("#"+sectionName).hasClass('w3-show')){
+		$(icon).removeClass('bi-caret-up-fill');
+		$(icon).addClass('bi-caret-down-fill');
+		$("#"+sectionName).removeClass('w3-show');
+		$("#"+sectionName).addClass('w3-hide');
+	}else{
+		$(icon).removeClass('bi-caret-down-fill');
+		$(icon).addClass('bi-caret-up-fill');
+		$("#"+sectionName).removeClass('w3-hide');
+		$("#"+sectionName).addClass('w3-show');
+	}
+}
+function updateBtn(mode, version){
+	$("."+mode).removeClass('wolf-btn-selected');
+	$("#"+version).addClass('wolf-btn-selected');
+	if(mode == 'versionMode'){
+		versionMode = version;
+	}else if(mode == 'windowMode'){
+		windowMode = version;
+	}
 }
