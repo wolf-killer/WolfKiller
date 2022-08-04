@@ -40,11 +40,13 @@ body {
 }
 .HiddenPopupInfo{
 	display: none; /* Hidden by default */
+	overflow-y: auto;
+	overflow-x: hidden;
 	position: relative;
 	background-color: rgba(40, 215, 215, 1);
 	width:90%; 
 	padding: 10px !important;
-	top: 10%; 
+	top: 15px; 
 	left: 5%;
 	z-index:99;
 }
