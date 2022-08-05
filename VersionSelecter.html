@@ -23,7 +23,7 @@
   <script src="./Translate.js"></script>
   <!--<script src="./Function.js"></script>-->
 </head>  
-<body> 
+<body oncontextmenu="return false;"> 
 	<div id="FixScreen" class="w3-display-container"> 
 		<div id="versionSelecter" class="PopupInfo w3-container w3-center w3-round-xxlarge" style="">
 			<div id="defaultVersionTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-margin-top"
@@ -77,7 +77,7 @@
 			<div id="VillagerActorTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
 				 ondblclick="extandSection($(this).find('i'), 'VillagerActorSection')">
 				平民陣營
-				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('Villager')"></i>
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showActorRuleInfo('Villager')"></i>
 				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'VillagerActorSection')"></i>
 			</div>
 			<div id="VillagerActorSection" class="w3-container w3-row w3-show" style=""> 
@@ -86,7 +86,7 @@
 			<div id="GodActorTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
 				 ondblclick="extandSection($(this).find('i'), 'GodActorSection')">
 				神職陣營
-				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('God')"></i>
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showActorRuleInfo('God')"></i>
 				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'GodActorSection')"></i>
 			</div>
 			<div id="GodActorSection" class="w3-container w3-row w3-show" style="">
@@ -95,7 +95,7 @@
 			<div id="WolfActorTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
 				ondblclick="extandSection($(this).find('i'), 'WolfActorSection')">
 				狼人陣營
-				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showHiddenPopupInfo('Wolf')"></i>
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showActorRuleInfo('Wolf')"></i>
 				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'WolfActorSection')"></i>
 			</div>
 			<div id="WolfActorSection" class="w3-container w3-row w3-show" style=""> 
@@ -165,8 +165,9 @@
 		</div>
 		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-L w3-container w3-center w3-round-xxlarge">
 			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="closeHiddenPopupInfo()"></i>
-			<div class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
-				角色簡介
+			<div class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-large">
+			  <i class="bi bi-bookmark-star-fill w3-text-blue"></i>
+			  角色簡介
 			</div>
 			<table id="actorRuleInfo" class="w3-table w3-bordered w3-medium" style=""> 
 			</table>
@@ -272,12 +273,17 @@ $(document).on("click", '.actorImg', function(temp){
 	}
 });
 $(document).on("taphold", '.actorImg', function(temp){
-	showHiddenPopupInfo(temp.currentTarget.name);
-});
-$(document).on("long-press", '.actorImg', function(temp){
-	showHiddenPopupInfo(temp.currentTarget.name);
+	showActorRuleInfo(temp.currentTarget.name);
 });
 $(document).on("taphold", '.extandSectionTitle', function(temp){
+	var section = temp.currentTarget.id;
+	section = section.slice(0, section.length - 5) + "Section";
+	extandSection($(this).find('i'), section);
+});
+$(document).on("long-press", '.actorImg', function(temp){
+	showActorRuleInfo(temp.currentTarget.name);
+});
+$(document).on("long-press", '.extandSectionTitle', function(temp){
 	var section = temp.currentTarget.id;
 	section = section.slice(0, section.length - 5) + "Section";
 	extandSection($(this).find('i'), section);
@@ -421,7 +427,7 @@ function resetVersion(){
 	wolfArray = [];
 	updateBtn('versionMode','gonly');
 }
-function showHiddenPopupInfo(input){
+function showActorRuleInfo(input){
 	$("#actorRuleInfo").html("");
 	var tempActorList = [];
 	if(input == "God"){
