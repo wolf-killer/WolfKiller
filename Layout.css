@@ -32,6 +32,30 @@ body {
 	margin-left: 16px !important;
 	margin-right: 16px !important;
 }
+.wolf-bar{
+	z-index: 5;
+}
+.wolf-bar-item{
+	padding: 2px 8px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+}
+.wolf-td1{
+	width: 25%;
+	text-align: left !important;
+}
+.wolf-td2{
+	width: 50%;
+	text-align: center !important;
+}
+.wolf-td3{
+	width: 25%;
+	text-align: right !important;
+}
+
 #FixScreen{
 	overflow-y: hidden;
 	overflow-x: hidden;
@@ -88,12 +112,20 @@ body {
 	background-color: rgba(210, 255, 255, 0.95);
 	border: 3px solid blue;
 }
-td {
-	text-align: left;
+#seatingPlan{
+	padding: 20px 40px;
 }
-.menuBar>i{
-	margin-right: 10px;
+.seatingTable{
+	transform-origin: top;
 }
+.wolf-playerCard{
+	position: relative; 
+	top: 0; 
+	left: 0;
+}
+
+
+
 .info{
 	border: 3px solid blue; 
 	background-color: #28d7d7;
@@ -145,11 +177,7 @@ td {
 	position: absolute; 
 	z-index:99;
 }
-.playerCard{
-	position: relative; 
-	top: 0; 
-	left: 0;
-}
+
 .playerImg{
 	width:100%; 
 	position: relative; 
@@ -230,22 +258,4 @@ td {
 	border: 3px solid blue;
 	background-color: #e6ffff;
 }
-.cardcol{
-	height:110px;
-}
-.playerButton{
-	font-size: 96%;
-}
-/*new css*/
-.td1{
-	width: 25%;
-	text-align: left !important;
-}
-.td2{
-	width: 50%;
-	text-align: center !important;
-}
-.td3{
-	width: 25%;
-	text-align: right !important;
-}
+
