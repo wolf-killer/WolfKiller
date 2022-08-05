@@ -1,4 +1,9 @@
-var getUrlParameter = function getUrlParameter(sParam) {
+var setWidth = 	document.documentElement.scrollWidth;
+var setHeight = document.documentElement.scrollHeight;
+var wh = 0;
+var landscape = false;
+
+var GetUrlParameter = function GetUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
@@ -12,10 +17,51 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
     return false;
 };
-function closeHiddenPopupInfo(){
+function GoPage(pageName, param){
+	path = 	"./" + pageName +".html?";
+	Object.entries(param).forEach(entry => {
+		const [key, value] = entry;
+		path += ""+ key + "=" + value + "&";	
+	});
+	window.location.href = path;
+}
+function SetWindow(){	
+	setWidth = 	GetUrlParameter('setWidth')?
+				GetUrlParameter('setWidth'):
+				document.documentElement.scrollWidth;
+	setHeight = GetUrlParameter('setHeight')?
+				GetUrlParameter('setHeight'):
+				document.documentElement.scrollHeight;
+	console.log("Available width/height: " + setWidth + "*" + screen.availHeight + " || w/h: " + setWidth / setHeight);
+	$("#FixScreen").css("height", setHeight);
+	$("#FixScreen").css("width", setWidth);
+	$("#seatingPlan").css("height", setHeight);
+	$("#seatingPlan").css("width", setWidth);
+	
+	$(".PopupInfo").css("max-height", setHeight-10);
+	$(".HiddenPopupInfo").css("max-height", setHeight-40);
+	wh = setWidth / setHeight;
+}
+function AdjustX(input){
+	if(input=="-"){
+		setWidth = setWidth - 10;
+	}else{
+		setWidth = setWidth + 10;
+	}
+	$("#FixScreen").css("width", setWidth);
+}
+function AdjustY(input){
+	if(input=="-"){
+		setHeight = setHeight - 10;
+	}else{
+		setHeight = setHeight + 10;
+	}
+	$("#FixScreen").css("height", setHeight);
+}
+function CloseHiddenPopupInfo(){
 	$(".HiddenPopupInfo").css("display","none");
 }
-function extandSection(icon, sectionName){
+function ExtandSection(icon, sectionName){
 	if($("#"+sectionName).hasClass('w3-show')){
 		$(icon).removeClass('bi-caret-up-fill');
 		$(icon).addClass('bi-caret-down-fill');
@@ -28,7 +74,7 @@ function extandSection(icon, sectionName){
 		$("#"+sectionName).addClass('w3-show');
 	}
 }
-function updateBtn(mode, version){
+function UpdateBtn(mode, version){
 	$("."+mode).removeClass('wolf-btn-selected');
 	$("#"+version).addClass('wolf-btn-selected');
 	if(mode == 'versionMode'){
@@ -37,7 +83,7 @@ function updateBtn(mode, version){
 		windowMode = version;
 	}
 }
-function showAlert(type, title, content){
+function ShowAlert(type, title, content){
 	var icon, color;
 	if(type == "alert"){
 		icon = "bi-exclamation-diamond-fill";
@@ -58,16 +104,21 @@ function showAlert(type, title, content){
 							"</div>");
 	$("#alertContent").html(content);
 	if(type == "question"){
-		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='closeHiddenPopupInfo()'>" + 
+		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
 									"確認" + 
 								"</button>" + 
-								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='closeHiddenPopupInfo()'>" + 
+								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
 									"取消" + 
 								"</button>");
 	}else{
-		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='closeHiddenPopupInfo()'>" + 
+		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
 									"關閉" + 
 								"</button>");
 	}
 	$("#alertDiv").css("display","block");
+}
+function GetRandom(){
+	var randomBuffer = new Uint32Array(1);
+	window.crypto.getRandomValues(randomBuffer);
+	return randomBuffer[0] / (0xFFFFFFFF + 1);
 }
