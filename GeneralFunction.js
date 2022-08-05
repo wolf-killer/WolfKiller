@@ -89,7 +89,6 @@ function ShowAlert(type, title, content){
 		icon = "bi-exclamation-diamond-fill";
 		color = "red";
 		$("#alertDiv").addClass("alertMode");
-		
 	}else if(type == "question"){
 		icon = "bi-question-diamond-fill";
 		color = "yellow";

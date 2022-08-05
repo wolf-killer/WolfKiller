@@ -15,31 +15,27 @@
   <!--icon list: https://icons.getbootstrap.com/ -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
   <script src="./GeneralFunction.js"></script>
-  <!--<script src="./Version.js"></script>
-  <script src="./Definition.js"></script>
-  <script src="./Translate.js"></script>
-  <script src="./Function.js"></script>-->
 </head> 
 
 <body> 
 	<div id="FixScreen" class="w3-display-container" style="border: 3px solid red;"> 
 		<table id="adjustButtonDiv" class="PopupInfo w3-display-middle w3-xlarge w3-round-xlarge">
 			<tr>
-				<td class="td1">
+				<td class="wolf-td1">
 					
 				</td>
-				<td class="td2">
-					<i class="bi bi-arrow-bar-down" onclick="adjustY('+')"></i>
+				<td class="wolf-td2">
+					<i class="bi bi-arrow-bar-down" onclick="AdjustY('+')"></i>
 				</td>
-				<td class="td3">
+				<td class="wolf-td3">
 					
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">
-					<i class="bi bi-arrow-bar-right" onclick="adjustX('+')"></i>
+				<td class="wolf-td1">
+					<i class="bi bi-arrow-bar-right" onclick="AdjustX('+')"></i>
 				</td>
-				<td class="td2" >
+				<td class="wolf-td2">
 					<span class="w3-large">
 						狼人殺<br/>
 					</span>
@@ -47,22 +43,24 @@
 						請先調整畫面大小<br/>
 						直至出現整個紅色邊框<br/>
 					</span>
-					<button class="wolf-btn w3-button w3-circle w3-large" style="padding: 8px 16px !important; width: 50%;"onclick="goPage('VersionSelecter')">
+					<button class="wolf-btn w3-button w3-circle w3-large" 
+							style="padding: 8px 16px !important; width: 50%;" 
+							onclick="GoPage('VersionSelecter', {setWidth:setWidth,setHeight:setHeight})">
 						開始
 					</button>
 				</td>
-				<td class="td3">
-					<i class="bi bi-arrow-bar-left" onclick="adjustX('-')"></i>
+				<td class="wolf-td3">
+					<i class="bi bi-arrow-bar-left" onclick="AdjustX('-')"></i>
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">
+				<td class="wolf-td1">
 					
 				</td>
-				<td class="td2">
-					<i class="bi bi-arrow-bar-up " onclick="adjustY('-')"></i>
+				<td class="wolf-td2">
+					<i class="bi bi-arrow-bar-up " onclick="AdjustY('-')"></i>
 				</td>
-				<td class="td3">
+				<td class="wolf-td3">
 					
 				</td>
 			</tr>
@@ -70,37 +68,8 @@
 	</div>
 </body> 
 <script>
-var setWidth = document.documentElement.scrollWidth;
-var setHeight = document.documentElement.scrollHeight;
-
 $(document).ready(function(){
-	console.log("Available width/height: " + setWidth + "*" + screen.availHeight + " || w/h: " + setWidth / setHeight);
-	wh = setWidth / setHeight;
-	$("#FixScreen").css("height", setHeight);
-	$("#FixScreen").css("width", setWidth);
+	SetWindow();	
 }); 
-function adjustX(input){
-	if(input=="-"){
-		setWidth = setWidth - 10;
-	}else{
-		setWidth = setWidth + 10;
-	}
-	$("#FixScreen").css("width", setWidth);
-}
-function adjustY(input){
-	if(input=="-"){
-		setHeight = setHeight - 10;
-	}else{
-		setHeight = setHeight + 10;
-	}
-	$("#FixScreen").css("height", setHeight);
-}
-function goPage(pageName){
-	path = 	"./VersionSelecter.html";
-	path += "?setWidth="+setWidth;
-	path += "&setHeight="+setHeight;
-	
-	window.location.href = path;
-}
 </script>
 </html> 

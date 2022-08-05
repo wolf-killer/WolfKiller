@@ -27,9 +27,9 @@
 	<div id="FixScreen" class="w3-display-container"> 
 		<div id="versionSelecter" class="PopupInfo w3-container w3-center w3-round-xxlarge" style="">
 			<div id="defaultVersionTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-margin-top"
-				 ondblclick="extandSection($(this).find('i'), 'defaultVersionSection')">
+				 ondblclick="ExtandSection($(this).find('i'), 'defaultVersionSection')">
 				預設組合
-				<i class="bi bi-caret-down-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'defaultVersionSection')"></i>
+				<i class="bi bi-caret-down-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'defaultVersionSection')"></i>
 			</div>
 			<div id="defaultVersionSection" class="w3-container w3-row-padding w3-stretch w3-hide w3-tiny"> 
 				<div class="s2 m2 l1 w3-col w3-center w3-col-middle" onclick="selectVersion(6)">
@@ -75,45 +75,45 @@
 			</div>
 			
 			<div id="VillagerActorTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
-				 ondblclick="extandSection($(this).find('i'), 'VillagerActorSection')">
+				 ondblclick="ExtandSection($(this).find('i'), 'VillagerActorSection')">
 				平民陣營
 				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showActorRuleInfo('Villager')"></i>
-				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'VillagerActorSection')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'VillagerActorSection')"></i>
 			</div>
 			<div id="VillagerActorSection" class="w3-container w3-row w3-show" style=""> 
 			</div>
 			
 			<div id="GodActorTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
-				 ondblclick="extandSection($(this).find('i'), 'GodActorSection')">
+				 ondblclick="ExtandSection($(this).find('i'), 'GodActorSection')">
 				神職陣營
 				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showActorRuleInfo('God')"></i>
-				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'GodActorSection')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'GodActorSection')"></i>
 			</div>
 			<div id="GodActorSection" class="w3-container w3-row w3-show" style="">
 			</div>
 			
 			<div id="WolfActorTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
-				ondblclick="extandSection($(this).find('i'), 'WolfActorSection')">
+				ondblclick="ExtandSection($(this).find('i'), 'WolfActorSection')">
 				狼人陣營
 				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showActorRuleInfo('Wolf')"></i>
-				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'WolfActorSection')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'WolfActorSection')"></i>
 			</div>
 			<div id="WolfActorSection" class="w3-container w3-row w3-show" style=""> 
 			</div>
 			
 			<div id="VictoryConditionTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-margin-top"
-				 ondblclick="extandSection($(this).find('i'), 'VictoryConditionSection')">
+				 ondblclick="ExtandSection($(this).find('i'), 'VictoryConditionSection')">
 				勝利條件
-				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="showAlert('info', victoryCondition.title, victoryCondition.content);"></i>
-				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'VictoryConditionSection')"></i>
+				<i class="bi bi-info-circle" style="margin-left: 2px;" onclick="ShowAlert('info', victoryCondition.title, victoryCondition.content);"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'VictoryConditionSection')"></i>
 			</div>
 			<div id="VictoryConditionSection" class="w3-container w3-row w3-show" style=""> 
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gonly')">
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="UpdateBtn('versionMode', 'gonly')">
 					<button id="gonly" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large versionMode">
 						屠邊
 					</button>
 				</div>
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('versionMode', 'gnv')">
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="UpdateBtn('versionMode', 'gnv')">
 					<button id="gnv" class="wolf-btn w3-btn w3-block w3-round-large versionMode">
 						屠城
 					</button>
@@ -121,17 +121,17 @@
 			</div>
 			
 			<div id="WindowConditionTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue" 
-				 ondblclick="extandSection($(this).find('i'), 'WindowConditionSection')">
+				 ondblclick="ExtandSection($(this).find('i'), 'WindowConditionSection')">
 				畫面形式
-				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'WindowConditionSection')"></i>
+				<i class="bi bi-caret-up-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'WindowConditionSection')"></i>
 			</div>
 			<div id="WindowConditionSection" class="w3-container w3-row w3-show" style=""> 
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('windowMode', 'tableAlign')">
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="UpdateBtn('windowMode', 'tableAlign')">
 					<button id="tableAlign" class="wolf-btn w3-btn w3-block w3-round-large windowMode">
 						表格形式<i class="bi bi-grid-3x3"></i>
 					</button>
 				</div>
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('windowMode', 'lrAlign')">
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="UpdateBtn('windowMode', 'lrAlign')">
 					<button id="lrAlign" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large windowMode">
 						左右分隔<i class="bi bi-distribute-horizontal"></i>
 					</button>
@@ -139,17 +139,17 @@
 			</div>
 <!--
 			<div id="OtherRuleTitle" class="extandSectionTitle w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue"
-				 ondblclick="extandSection($(this).find('i'), 'OtherRuleSection')">
+				 ondblclick="ExtandSection($(this).find('i'), 'OtherRuleSection')">
 				其他規則
-				<i class="bi bi-caret-down-fill w3-display-right w3-margin-right" onclick="extandSection(this, 'OtherRuleSection')"></i>
+				<i class="bi bi-caret-down-fill w3-display-right w3-margin-right" onclick="ExtandSection(this, 'OtherRuleSection')"></i>
 			</div>
 			<div id="OtherRuleSection" class="w3-container w3-row w3-hide" style=""> 
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('suicideMode', 'suicideModeYes')">
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="UpdateBtn('suicideMode', 'suicideModeYes')">
 					<button id="suicideModeYes" class="wolf-btn w3-btn w3-block w3-round-large suicideMode">
 						<B>可</B>自刀
 					</button>
 				</div>
-				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="updateBtn('suicideMode', 'suicideModeNo')">
+				<div class="s6 m6 l6 w3-col w3-center w3-col-middle" onclick="UpdateBtn('suicideMode', 'suicideModeNo')">
 					<button id="suicideModeNo" class="wolf-btn wolf-btn-selected w3-btn w3-block w3-round-large suicideMode">
 						<B>不可</B>自刀
 					</button>
@@ -164,19 +164,19 @@
 			</div>
 		</div>
 		<div id="actorRuleDiv" class="HiddenPopupInfo HiddenPopupInfo-L w3-container w3-center w3-round-xxlarge">
-			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="closeHiddenPopupInfo()"></i>
+			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="CloseHiddenPopupInfo()"></i>
 			<div class="w3-display-container w3-center w3-col-middle w3-pale-blue w3-leftbar w3-rightbar w3-border-blue w3-large">
-			  <i class="bi bi-bookmark-star-fill w3-text-blue"></i>
-			  角色簡介
+				<i class="bi bi-bookmark-star-fill w3-text-blue"></i>
+				角色簡介
 			</div>
 			<table id="actorRuleInfo" class="w3-table w3-bordered w3-medium" style=""> 
 			</table>
-			<button class="wolf-btn w3-btn w3-round-large" onclick="closeHiddenPopupInfo()">
+			<button class="wolf-btn w3-btn w3-round-large" onclick="CloseHiddenPopupInfo()">
 				關閉
 			</button>
 		</div>
 		<div id="alertDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge">
-			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="closeHiddenPopupInfo()"></i>
+			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="CloseHiddenPopupInfo()"></i>
 			<div id="alertTitle" class="w3-container w3-large"></div>
 			<div id="alertContent" class="w3-container w3-medium" style=""></div>
 			<div id="alertAction" class="w3-container w3-medium" style=""></div>
@@ -184,11 +184,6 @@
 	</div>
 </body> 
 <script>
-var setWidth = document.documentElement.scrollWidth;
-var setHeight = document.documentElement.scrollHeight;
-var wh = 0;
-var landscape = false;
-
 var submitTotalPlayer = 0;
 var totalActorArray = [];
 var godArray = []; 
@@ -203,23 +198,12 @@ var alignment;
 var pressTimer;//
 
 $(document).ready(function(){
-	setWidth = getUrlParameter('setWidth')?
-						getUrlParameter('setWidth'):
-						document.documentElement.scrollWidth;
-	setHeight = getUrlParameter('setHeight')?
-						getUrlParameter('setHeight'):
-						document.documentElement.scrollHeight;
-	$("#FixScreen").css("height", setHeight);
-	$("#FixScreen").css("width", setWidth);
-	$(".PopupInfo").css("max-height", setHeight-10);
-	$(".HiddenPopupInfo").css("max-height", setHeight-40);
-	wh = setWidth / setHeight;
+	SetWindow();
+	getActorList();
 	if(wh>0.7){
 		landscape = true;
-		updateBtn('windowMode', 'tableAlign');
+		UpdateBtn('windowMode', 'tableAlign');
 	}
-	getActorList();
-	
 }); 
 $(document).on("click", '.actorImg', function(temp){
 	var controlActor = temp.currentTarget.name;
@@ -265,10 +249,10 @@ $(document).on("click", '.actorImg', function(temp){
 	}
 	$("#submitTotalPlayer").text(translate(submitTotalPlayer));
 	if(submitTotalPlayer > 12){
-		updateBtn('windowMode', 'tableAlign');
+		UpdateBtn('windowMode', 'tableAlign');
 	}
 	if(submitTotalPlayer > 20){
-		showAlert('alert', '人數錯誤','暫未支援多於' + translate(submitTotalPlayer-1) + '人局');
+		ShowAlert('alert', '人數錯誤','暫未支援多於' + translate(submitTotalPlayer-1) + '人局');
 		selectVersion(0);
 	}
 });
@@ -278,15 +262,16 @@ $(document).on("taphold", '.actorImg', function(temp){
 $(document).on("taphold", '.extandSectionTitle', function(temp){
 	var section = temp.currentTarget.id;
 	section = section.slice(0, section.length - 5) + "Section";
-	extandSection($(this).find('i'), section);
+	ExtandSection($(this).find('i'), section);
 });
+//data-long-press-delay="500" /*1000 = 1s*/
 $(document).on("long-press", '.actorImg', function(temp){
 	showActorRuleInfo(temp.currentTarget.name);
 });
 $(document).on("long-press", '.extandSectionTitle', function(temp){
 	var section = temp.currentTarget.id;
 	section = section.slice(0, section.length - 5) + "Section";
-	extandSection($(this).find('i'), section);
+	ExtandSection($(this).find('i'), section);
 });
 function getActorList(){
 	$("#VillagerActorSection").html("");
@@ -321,32 +306,32 @@ function selectVersion(noOfPlayer){
 	submitTotalPlayer = noOfPlayer;
 	switch(noOfPlayer){
 		case 6:
-			updateBtn('versionMode', 'gnv');
+			UpdateBtn('versionMode', 'gnv');
 			tempArray = array6;
 			break;
 		case 7:
-			updateBtn('versionMode', 'gonly');
+			UpdateBtn('versionMode', 'gonly');
 			tempArray = array7;
 			break;
 		case 8:
-			updateBtn('versionMode', 'gonly');
+			UpdateBtn('versionMode', 'gonly');
 			tempArray = array8;
 			break;
 		case 9:
-			updateBtn('versionMode', 'gonly');
+			UpdateBtn('versionMode', 'gonly');
 			tempArray = array9;
 			break;
 		case 10: 
-			updateBtn('versionMode', 'gonly');
+			UpdateBtn('versionMode', 'gonly');
 			tempArray = array10;
 			break;
 		case 11: 
-			updateBtn('versionMode', 'gonly');
+			UpdateBtn('versionMode', 'gonly');
 			tempArray = array11;
 			break;
 		case 12: 
-			updateBtn('versionMode', 'gonly');
-			updateBtn('windowMode', 'tableAlign');
+			UpdateBtn('versionMode', 'gonly');
+			UpdateBtn('windowMode', 'tableAlign');
 			tempArray = array12;
 			break;
 		default:
@@ -374,7 +359,7 @@ function submitVersion(){
 		var tempActorCount = $(".actorCount")[i].innerText;
 		var prefixPosition = tempActor.indexOf(prefix);
 		var postfixPosition = tempActor.indexOf(postfix);
-		tempActor = tempActor.slice(prefixPosition+prefix.length, postfixPosition)
+		tempActor = tempActor.slice(prefixPosition+prefix.length, postfixPosition);
 		if(tempActor.length > 0 && tempActorCount > 0){
 			if(allGod.includes(tempActor)){
 				for(var j=0; j<tempActorCount; j++){
@@ -398,12 +383,11 @@ function submitVersion(){
 		}
 	}
 	if(!(wolfArray.length > 0 && villagerArray.length > 0 && godArray.length > 0) || totalActorArray.length < 6){
-		showAlert('alert', '人數錯誤','最少六名玩家<br/>並且每個陣營最少要有一名玩家');
+		ShowAlert('alert', '人數錯誤','最少六名玩家<br/>並且每個陣營最少要有一名玩家');
 		selectVersion(0);
 		return;
 	}
 	
-	console.log(versionMode);
 	/*versionLog += "版本：<br/>玩家："+translate(submitTotalPlayer)+"人<br/>屠邊："+translate(versionMode)+"<br/>角色分佈：";
 	versionLog += "<table class='w3-topbar w3-bottombar w3-border-blue w3-pale-blue' style='width:100%'>";
 	versionLog += "<tr><td style='width:40px;'>神職</td><td>"+godChinArray.toString()+"</td></tr>";
@@ -414,7 +398,20 @@ function submitVersion(){
 	//closePopUp();
 	//startNewGame();
 	//showVersion();
-	goPage("WolfKiller");
+	var passParam = {
+		setWidth: setWidth,
+		setHeight: setHeight,
+		totalActorArray: totalActorArray,
+		godArray: godArray,
+		godChinArray: godChinArray,
+		villagerArray: villagerArray,
+		villagerChinArray: villagerChinArray,
+		wolfArray: wolfArray,
+		wolfChinArray: wolfChinArray,
+		versionMode: versionMode,
+		windowMode: windowMode
+	};
+	GoPage("WolfKiller", passParam);
 }
 function resetVersion(){
 	submitTotalPlayer = 0;
@@ -425,7 +422,7 @@ function resetVersion(){
 	godArray = [];
 	villagerArray = [];
 	wolfArray = [];
-	updateBtn('versionMode','gonly');
+	UpdateBtn('versionMode','gonly');
 }
 function showActorRuleInfo(input){
 	$("#actorRuleInfo").html("");
@@ -452,13 +449,6 @@ function showActorRuleInfo(input){
 										"</tr>");	
 	}
 	$("#actorRuleDiv").css("display","block");
-}
-function goPage(pageName){
-	path = 	"./WolfKiller.html";
-	path += "?setWidth="+setWidth;
-	path += "&setHeight="+setHeight;
-	
-	window.location.href = path;
 }
 </script>
 </html>
