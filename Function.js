@@ -22,8 +22,6 @@ var log = "";
 var wh = 0;
 var landscape = false;
 
-
-
 $(document).on("click", '.playerButton', function(temp){
 	var playerCard = "playerCard";
 	var playerButton = "playerButton";
@@ -1034,8 +1032,6 @@ function versionSelect(){
 	closePopUp();
 	$("#versionSelecter").show();
 }
-
-
 function showVersion() {
 	alignment = $("input:radio[name=alignment]:checked").val();
 	$("#versionDiv").html("");
@@ -1047,7 +1043,7 @@ function showVersion() {
 	if(alignment == "tableAlign"){
 			//show as table
 		$("#versionDiv").css("width", "-webkit-fill-available");
-		for(var loop=1; loop<=submitTotalPlayer; loop++){
+		for(var loop = 1; loop <= submitTotalPlayer; loop++){
 			$("#versionDiv").append(
 			"			<div class=\"w3-container s4 m3 l2 w3-col w3-center w3-col-middle\" style=\"\"> " +
 			"				<div " +
