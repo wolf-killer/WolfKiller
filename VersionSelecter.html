@@ -7,7 +7,7 @@
   <meta http-equiv="cache-control" content="no-cache" /> 
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
   <link rel="icon" type="image/x-icon" href="./image/WebIcon.png">
-  <link rel="stylesheet" type="text/css" href="./Layout.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/Layout.css"/>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css">
@@ -16,11 +16,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <script src="./long-press-event.min.js"></script>
-  <script src="./GeneralFunction.js"></script>
-  <script src="./Version.js"></script>
-  <script src="./Definition.js"></script>
-  <script src="./Translate.js"></script>
+  <script src="./js/long-press-event.min.js"></script>
+  <script src="./js/GeneralFunction.js"></script>
+  <script src="./js/Version.js"></script>
+  <script src="./js/Definition.js"></script>
+  <script src="./js/Translate.js"></script>
   <!--<script src="./Function.js"></script>-->
 </head>  
 <body oncontextmenu="return false;"> 
@@ -331,7 +331,6 @@ function selectVersion(noOfPlayer){
 			break;
 		case 12: 
 			UpdateBtn('versionMode', 'gonly');
-			UpdateBtn('windowMode', 'tableAlign');
 			tempArray = array12;
 			break;
 		default:

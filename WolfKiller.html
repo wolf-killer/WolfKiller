@@ -7,7 +7,7 @@
   <meta http-equiv="cache-control" content="no-cache" /> 
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
   <link rel="icon" type="image/x-icon" href="./image/WebIcon.png">
-  <link rel="stylesheet" type="text/css" href="./Layout.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/Layout.css"/>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css">
@@ -16,12 +16,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <script src="./long-press-event.min.js"></script>
-  <script src="./GeneralFunction.js"></script>
-  <script src="./Version.js"></script>
-  <script src="./Definition.js"></script>
-  <script src="./Translate.js"></script>
-  <!--<script src="./Function.js"></script>-->
+  <script src="./js/long-press-event.min.js"></script>
+  <script src="./js/GeneralFunction.js"></script>
+  <script src="./js/Version.js"></script>
+  <script src="./js/Definition.js"></script>
+  <script src="./js/Translate.js"></script>
+  <script src="./js/WolfKiller.js"></script>
+  <script src="./js/Window.js"></script>
 </head>  
 <body oncontextmenu="return false;"> 
 	<div id="FixScreen" class="w3-display-container"> 
@@ -43,192 +44,15 @@
 			<i class="wolf-bar-item bi bi-music-note-beamed" onclick="playSound('testAudio')"></i>
 			<i class="wolf-bar-item bi bi-person-plus" onclick="versionSelect()"></i>
 		</div> 
+		<div class="wolf-info w3-display-topmiddle" style="transform:rotate(180deg); margin-top: 25px;" onclick="$(this).hide();">
+		</div>
+		<div class="wolf-info w3-display-bottommiddle" style="transform:rotate(0deg); margin-bottom: 25px;" onclick="$(this).hide()">
+		</div>
 		<div id="seatingPlan" class="w3-display-container">
 		</div>
 		<div id="loader-background">
 			<div id="loader"></div>
 		</div>
 	</div>
-	
 </body> 
-<script>
-var totalActorArray = GetUrlParameter('totalActorArray')? GetUrlParameter('totalActorArray').split(","): [];
-var godArray = GetUrlParameter('godArray')? GetUrlParameter('godArray').split(","): [];
-var godChinArray = GetUrlParameter('godChinArray')? GetUrlParameter('godChinArray').split(","): [];
-var villagerArray = GetUrlParameter('villagerArray')? GetUrlParameter('villagerArray').split(","): [];
-var villagerChinArray = GetUrlParameter('villagerChinArray')? GetUrlParameter('villagerChinArray').split(","): [];
-var wolfArray = GetUrlParameter('wolfArray')? GetUrlParameter('wolfArray').split(","): [];
-var wolfChinArray = GetUrlParameter('wolfChinArray')? GetUrlParameter('wolfChinArray').split(","): [];
-var versionMode = GetUrlParameter('versionMode')? GetUrlParameter('versionMode'): null;
-var windowMode = GetUrlParameter('windowMode')? GetUrlParameter('windowMode'): null;
-
-var totalPlayer = 0;
-var player = [null]; 
-var alivePlayer = [null];
-var godAlivePlayer = []; 
-var villagerAlivePlayer = []; 
-var wolfAlivePlayer = []; 
-var action;
-
-$(window).on("load", function(){
-	$("#loader-background").show();
-	if(totalActorArray.length < 6){
-		ShowAlert("alert", "錯誤", "重啟遊戲");
-		GoPage("VersionSelecter", {});
-		return;
-	}
-	SetWindow();
-	gameInit();
-}); 
-function gameInit(){
-	console.log(totalActorArray);
-	totalPlayer = totalActorArray.length;
-	player = [null]; 
-	
-	for(var i=totalPlayer; i>0; i--){
-		//var no = Math.floor(Math.random() * (i - 0)) + 0; 
-		var no = Math.floor(GetRandom() * (i - 0)) + 0;
-		player.push(totalActorArray[no]); 
-		alivePlayer.push(totalActorArray[no]); 
-		totalActorArray.splice(no,1); 
-	} 
-	console.log(player); 
-	godAlivePlayer = godArray;
-	villagerAlivePlayer = villagerArray;
-	wolfAlivePlayer = wolfArray;
-	setPlayerSeat();
-	
-	
-	action = "confirmRole"; 
-	//$("#playConfirmRoles").click();
-	confirmRoles.play();
-	confirmPlayer ++;
-	$("#playerImg"+confirmPlayer).addClass("confirming");
-	$(".info").show();
-	$(".info").html("確認身份"+
-					"<i onclick=\"updateAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:20px;\"></i>");	
-	log += "<table class='dayLog w3-pale-blue'>";
-	
-}
-function setPlayerSeat(){
-	$("#seatingPlan").html("");
-	var html="";
-	
-	if(windowMode == "tableAlign"){
-			//show as table
-		html += 
-			"	<div id=\"for-"+totalPlayer+"-player\" class=\"seatingTable w3-container\" style=\"width:100%;\">" +
-			"		<div class=\"w3-row\" style=\"\"> ";
-		for(var loop=1; loop<=totalPlayer; loop++){
-			html += 
-			"			<div class=\"w3-container s4 m3 l2 w3-col w3-center w3-col-middle\" style=\"padding: 2px;\"> " +
-			"				<div " +
-			"					id=\"playerCard"+loop+"\" " +
-			"					name=\""+loop+"\"" +
-			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
-			"					<img id=\"playerImg"+loop+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"\"> " +
-			"					<img id=\"diedImg"+loop+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
-			"					<img id=\"killImg"+loop+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
-			"					<button " +
-			"						id=\"playerButton"+loop+"\" " +
-			"						name=\""+loop+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-bottommiddle \"" +
-			"						style=\"\"> " +
-			"						"+ loop +
-			"					</button> " +
-			"				</div> " +
-			"			</div>" ;
-		}
-		html += 
-			"		</div>" +
-			"	</div>";
-			$("#loader-background").hide();
-	}else if(windowMode == "lrAlign"){	
-			//show only left-right
-		var y = totalPlayer;
-		var x = 1;
-		html += 
-			"	<table id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"\">";
-		for(var x=1; x<y; x++){
-			html += 
-			"		<tr> " + 
-			"			<td class=\"wolf-td1\" style=\"\"> " +
-			"				<div " +
-			"					id=\"playerCard"+x+"\" " +
-			"					name=\""+x+"\"" +
-			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
-			"					<img id=\"playerImg"+x+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"transform:rotate(90deg);\"> " +
-			"					<img id=\"diedImg"+x+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
-			"					<img id=\"killImg"+x+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
-			"					<button " +
-			"						id=\"playerButton"+x+"\" " +
-			"						name=\""+x+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right\"" +
-			"						style=\"transform: translate(0%,-50%) rotate(-90deg);\"> " +
-			"						"+ x +
-			"					</button> " +
-			"				</div> " +
-			"			</td>" +
-			"			<td class=\"wolf-td2\" style=\"\"> " +
-			"			</td>" +
-			"			<td class=\"wolf-td3\" style=\"\"> " +
-			"				<div " +
-			"					id=\"playerCard"+y+"\" " +
-			"					name=\""+y+"\"" +
-			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
-			"					<img id=\"playerImg"+y+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"transform:rotate(-90deg);\"> " +
-			"					<img id=\"diedImg"+y+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
-			"					<img id=\"killImg"+y+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
-			"					<button " +
-			"						id=\"playerButton"+y+"\" " +
-			"						name=\""+y+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-left\" " +
-			"						style=\"transform: translate(0%,-50%) rotate(90deg);\"> " +
-			"						"+ y +
-			"					</button> " +
-			"				</div> " +
-			"			</td>" + 
-			"		</tr>";
-			y=y-1;
-		}
-		if(totalPlayer%2>0){
-			html += 
-			"		<tr> " + 
-			"			<td class=\"wolf-td1\" style=\"\"> " +
-			"				<div " +
-			"					id=\"playerCard"+x+"\" " +
-			"					name=\""+x+"\"" +
-			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
-			"					<img id=\"playerImg"+x+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"transform:rotate(90deg);\"> " +
-			"					<img id=\"diedImg"+x+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
-			"					<img id=\"killImg"+x+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
-			"					<button " +
-			"						id=\"playerButton"+x+"\" " +
-			"						name=\""+x+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right\"" +
-			"						style=\"transform: translate(0%,-50%) rotate(-90deg);\"> " +
-			"						"+ x +
-			"					</button> " +
-			"				</div> " +
-			"			</td>" +
-			"			<td class=\"wolf-td2\" style=\"\"> " +
-			"			</td>" +
-			"			<td class=\"wolf-td3\" style=\"\"> " +
-			"			</td>" + 
-			"		</tr>";
-		}
-		html += 
-			"	</table>";
-		setTimeout(function(){ resizeSeatingPlan() }, 500);	
-	}
-	
-	$("#seatingPlan").html(html);
-}
-function resizeSeatingPlan(){
-	var stHeight = $(".seatingTable").height(); 
-	var scale = setHeight * 0.9 / stHeight;
-	$(".wolf-screenseat").css('width', scale*100+ '%');
-	$("#loader-background").hide();
-}
-</script>
 </html> 
