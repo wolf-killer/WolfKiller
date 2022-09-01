@@ -117,6 +117,20 @@ function ShowAlert(type, title, content){
 	}
 	$("#alertDiv").css("display","block");
 }
+function ShowInfo(){
+	if(windowMode == "tableAlign"){
+		let stHeight = $(".seatingTable").height();
+		console.log(setHeight - stHeight);
+		let setInfoHeight = 50;
+		if(setHeight - stHeight - 100 > 50){
+			setInfoHeight = setHeight - stHeight - 100;
+		}
+		$(".wolf-table-info").css("height", setInfoHeight+"px");
+		$(".wolf-table-info").show();
+	}else if(windowMode == "lrAlign"){
+		$(".wolf-lr-info").show();
+	}
+}
 function GetRandom(){
 	var randomBuffer = new Uint32Array(1);
 	window.crypto.getRandomValues(randomBuffer);
