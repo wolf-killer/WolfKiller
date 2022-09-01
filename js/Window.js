@@ -9,7 +9,7 @@ function setPlayerSeat(){
 			"		<div class=\"w3-row\" style=\"\"> ";
 		for(var loop=1; loop<=totalPlayer; loop++){
 			html += 
-			"			<div class=\"w3-container s4 m3 l2 w3-col w3-center w3-col-middle\" style=\"padding: 2px;\"> " +
+			"			<div class=\"w3-container s3 m3 l2 w3-col w3-center w3-col-middle\" style=\"padding: 2px;\"> " +
 			"				<div " +
 			"					id=\"playerCard"+loop+"\" " +
 			"					name=\""+loop+"\"" +
@@ -20,7 +20,7 @@ function setPlayerSeat(){
 			"					<button " +
 			"						id=\"playerButton"+loop+"\" " +
 			"						name=\""+loop+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-bottommiddle \"" +
+			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-topleft w3-large\"" +
 			"						style=\"\"> " +
 			"						"+ loop +
 			"					</button> " +
@@ -31,6 +31,7 @@ function setPlayerSeat(){
 			"		</div>" +
 			"	</div>";
 			$("#loader-background").hide();
+			$("#seatingPlan").css('padding', '60px 0px');
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
@@ -51,7 +52,7 @@ function setPlayerSeat(){
 			"					<button " +
 			"						id=\"playerButton"+x+"\" " +
 			"						name=\""+x+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right\"" +
+			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right w3-large\"" +
 			"						style=\"transform: translate(0%,-50%) rotate(-90deg);\"> " +
 			"						"+ x +
 			"					</button> " +
@@ -70,7 +71,7 @@ function setPlayerSeat(){
 			"					<button " +
 			"						id=\"playerButton"+y+"\" " +
 			"						name=\""+y+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-left\" " +
+			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-left w3-large\" " +
 			"						style=\"transform: translate(0%,-50%) rotate(90deg);\"> " +
 			"						"+ y +
 			"					</button> " +
@@ -93,7 +94,7 @@ function setPlayerSeat(){
 			"					<button " +
 			"						id=\"playerButton"+x+"\" " +
 			"						name=\""+x+"\" " +
-			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right\"" +
+			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right w3-large\"" +
 			"						style=\"transform: translate(0%,-50%) rotate(-90deg);\"> " +
 			"						"+ x +
 			"					</button> " +
@@ -116,5 +117,11 @@ function resizeSeatingPlan(){
 	var stHeight = $(".seatingTable").height(); 
 	var scale = setHeight * 0.9 / stHeight;
 	$(".wolf-screenseat").css('width', scale*100+ '%');
+	console.log(scale);
+	if(scale > 1){
+		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(-'+scale*10+'%, 0%)'); 
+	}else{
+		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(50%, 0%)'); 
+	}
 	$("#loader-background").hide();
 }
