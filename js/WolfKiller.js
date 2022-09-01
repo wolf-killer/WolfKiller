@@ -15,6 +15,7 @@ var godAlivePlayer = [];
 var villagerAlivePlayer = []; 
 var wolfAlivePlayer = []; 
 var action;
+var log;
 
 var confirmPlayer = 0;
 
@@ -37,6 +38,7 @@ $(document).on("click", '.playerButton', function(temp){
 		selectPlayer = tempId.substring(playerCard.length);
 	}else{
 		selectPlayer = tempId.substring(playerButton.length);
+		return;
 	}
 	if(temp.currentTarget.classList.contains("diedPlayer")){
 		return;
@@ -115,22 +117,21 @@ function gameInit(){
 	villagerAlivePlayer = villagerArray;
 	wolfAlivePlayer = wolfArray;
 	setPlayerSeat();
-	
-	
+		
 	action = "confirmRole"; 
-	//$("#playConfirmRoles").click();
-	//confirmRoles.play();
+	
 	confirmPlayer ++;
 	$("#playerImg"+confirmPlayer).addClass("confirming");
-	$(".wolf-info").show();
+	ShowInfo();
 	$(".wolf-info").html("確認身份"+
 					"<i onclick=\"updateAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:20px;\"></i>");	
 	log += "<table class='dayLog w3-pale-blue'>";
 }
 
+
 function confirmRole(noOfPlayer){ 
 	action = "confirmRoleING";
-	//if(!landscape)
+	if(setWidth < 500)
 		$("#playerDiv").show();
 	switch(player[noOfPlayer]){ 
 		case "Wolf":	
@@ -222,7 +223,7 @@ function confirmRole(noOfPlayer){
 function hiddenRole(noOfPlayer){ 
 	$("#playerImg"+noOfPlayer).attr("src",imagePlayer);
 	$("#playerDiv").hide();
-	$(".wolf-info").show();
+	ShowInfo();
 	//resetDiv();
 } 
 function checkNext(){
