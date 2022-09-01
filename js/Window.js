@@ -4,12 +4,21 @@ function setPlayerSeat(){
 	
 	if(windowMode == "tableAlign"){
 			//show as table
+		if(setWidth > 500 || setWidth < 400){
+			loopWidth = '25%';
+		}else{
+			if(totalPlayer < 13){
+				loopWidth = '33%';
+			}else{
+				loopWidth = '25%';
+			}
+		}
 		html += 
 			"	<div id=\"for-"+totalPlayer+"-player\" class=\"seatingTable w3-container\" style=\"width:100%;\">" +
 			"		<div class=\"w3-row\" style=\"\"> ";
 		for(var loop=1; loop<=totalPlayer; loop++){
 			html += 
-			"			<div class=\"w3-container s3 m3 l2 w3-col w3-center w3-col-middle\" style=\"padding: 2px;\"> " +
+			"			<div class=\"w3-container w3-col w3-center w3-col-middle\" style=\"padding: 2px; width: "+loopWidth+";\"> " +
 			"				<div " +
 			"					id=\"playerCard"+loop+"\" " +
 			"					name=\""+loop+"\"" +
@@ -30,8 +39,9 @@ function setPlayerSeat(){
 		html += 
 			"		</div>" +
 			"	</div>";
-			$("#loader-background").hide();
-			$("#seatingPlan").css('padding', '60px 0px');
+		$("#loader-background").hide();
+		$("#seatingPlan").css('padding', '40px 0px');
+		
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
