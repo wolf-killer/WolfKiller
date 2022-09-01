@@ -89,6 +89,7 @@ function ShowAlert(type, title, content){
 		icon = "bi-exclamation-diamond-fill";
 		color = "red";
 		$("#alertDiv").addClass("alertMode");
+		
 	}else if(type == "question"){
 		icon = "bi-question-diamond-fill";
 		color = "yellow";
@@ -120,4 +121,14 @@ function GetRandom(){
 	var randomBuffer = new Uint32Array(1);
 	window.crypto.getRandomValues(randomBuffer);
 	return randomBuffer[0] / (0xFFFFFFFF + 1);
+}
+function playSound(x){
+	//testAudio.play(); 
+	document.getElementById(x).play()
+		.then(function(){
+			console.log("Play Success - " + x);
+		}).catch(function(err){
+			console.log("Play Error - " + x);
+			alert(err);
+		});
 }
