@@ -41,7 +41,6 @@ function setPlayerSeat(){
 			"	</div>";
 		$("#loader-background").hide();
 		$("#seatingPlan").css('padding', '40px 0px');
-		
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
@@ -120,16 +119,18 @@ function setPlayerSeat(){
 			"	</table>";
 		setTimeout(function(){ resizeSeatingPlan() }, 500);	
 	}
-	
 	$("#seatingPlan").html(html);
 }
 function resizeSeatingPlan(){
 	var stHeight = $(".seatingTable").height(); 
 	var scale = setHeight * 0.9 / stHeight;
-	$(".wolf-screenseat").css('width', scale*100+ '%');
-	console.log(scale);
+	if(scale > 1.5){
+		$(".wolf-screenseat").css('width', '150%');
+	}else{
+		$(".wolf-screenseat").css('width', scale*100+ '%');
+	}
 	if(scale > 1){
-		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(-'+scale*10+'%, 0%)'); 
+		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(-'+scale*20+'%, 0%)'); 
 	}else{
 		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(50%, 0%)'); 
 	}
