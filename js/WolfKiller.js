@@ -15,7 +15,9 @@ var godAlivePlayer = [];
 var villagerAlivePlayer = []; 
 var wolfAlivePlayer = []; 
 var action;
-var log;
+
+var versionLog = "";
+var log = "<table class='dayLog w3-pale-blue'>";
 
 var confirmPlayer = 0;
 
@@ -101,10 +103,8 @@ $(document).on("click", '.playerButton', function(temp){
 	}
 });
 function gameInit(){
-	console.log(totalActorArray);
 	totalPlayer = totalActorArray.length;
 	player = [null]; 
-	
 	for(var i=totalPlayer; i>0; i--){
 		//var no = Math.floor(Math.random() * (i - 0)) + 0; 
 		var no = Math.floor(GetRandom() * (i - 0)) + 0;
@@ -116,19 +116,28 @@ function gameInit(){
 	godAlivePlayer = godArray;
 	villagerAlivePlayer = villagerArray;
 	wolfAlivePlayer = wolfArray;
+	writeVersionLog();
 	setPlayerSeat();
-		
+	ShowLog("startConfirmRole()");
+}
+function writeVersionLog(){
+	versionLog += "版本：<br/>玩家："+translate(totalPlayer)+"人<br/>屠邊："+translate(versionMode)+"<br/>角色分佈：";
+	versionLog += "<table class='w3-topbar w3-bottombar w3-border-blue w3-pale-blue' style='width:100%'>";
+	versionLog += "<tr><td style='width:40px;'>神職</td><td>"+godChinArray.toString()+"</td></tr>";
+	versionLog += "<tr><td>平民</td><td>"+villagerChinArray.toString()+"</td></tr>";
+	versionLog += "<tr><td>狼人</td><td>"+wolfChinArray.toString()+"</td></tr>";
+	versionLog += "</table><br/>";
+	$("#versionLog").html(versionLog);
+}
+function startConfirmRole(){
+	confirmRoles.play();
 	action = "confirmRole"; 
-	
 	confirmPlayer ++;
 	$("#playerImg"+confirmPlayer).addClass("confirming");
-	ShowInfo();
 	$(".wolf-info").html("確認身份"+
-					"<i onclick=\"updateAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:20px;\"></i>");	
-	log += "<table class='dayLog w3-pale-blue'>";
+					"<i onclick=\"CheckAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:20px;\"></i>");
+	ShowInfo();
 }
-
-
 function confirmRole(noOfPlayer){ 
 	action = "confirmRoleING";
 	if(setWidth < 500)
@@ -224,17 +233,23 @@ function hiddenRole(noOfPlayer){
 	$("#playerImg"+noOfPlayer).attr("src",imagePlayer);
 	$("#playerDiv").hide();
 	ShowInfo();
-	//resetDiv();
 } 
 function checkNext(){
 	$("#playerImg"+confirmPlayer).removeClass("confirming");
 	confirmPlayer++;
 	$("#playerImg"+confirmPlayer).addClass("confirming");	
 	action = "confirmRole";
-	/*
-	if(confirmPlayer > submitTotalPlayer){
-		resetDiv();
+	if(confirmPlayer > totalPlayer){
+		showDayMenu();
+	}
+}
+function showDayMenu(){
+	if(windowMode == "tableAlign"){
+		/// working
+	}else if(windowMode == "lrAlign"){
+		let setDayMenuWidth = $(".seatingTable .wolf-td2").width() * 0.7;			
+		$("#dayActionDiv").css("height", setHeight);
+		$("#dayActionDiv").css("width", setDayMenuWidth);
 		$("#dayActionDiv").show();
 	}
-	*/
 }
