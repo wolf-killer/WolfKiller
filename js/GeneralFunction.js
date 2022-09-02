@@ -60,6 +60,7 @@ function AdjustY(input){
 }
 function CloseHiddenPopupInfo(){
 	$(".HiddenPopupInfo").css("display","none");
+	$(".ActionPopup").css("display","none");
 }
 function ExtandSection(icon, sectionName){
 	if($("#"+sectionName).hasClass('w3-show')){
@@ -83,14 +84,14 @@ function UpdateBtn(mode, version){
 		windowMode = version;
 	}
 }
-function ShowAlert(type, title, content){
+function ShowAlert(type, title, content, nextAction, noOfInput){
+	$("#alertDiv").removeClass("alertMode questionMode remarkMode");
 	var icon, color;
 	if(type == "alert"){
 		icon = "bi-exclamation-diamond-fill";
 		color = "red";
 		$("#alertDiv").addClass("alertMode");
-		
-	}else if(type == "question"){
+	}else if(type == "question" || type == "boolean"){
 		icon = "bi-question-diamond-fill";
 		color = "yellow";
 		$("#alertDiv").addClass("questionMode");
@@ -99,19 +100,31 @@ function ShowAlert(type, title, content){
 		color = "blue";
 		$("#alertDiv").addClass("remarkMode");
 	}
+	if(nextAction != null){
+		nextAction = "CloseHiddenPopupInfo(); " + nextAction;
+	}else{
+		nextAction = "CloseHiddenPopupInfo();";
+	}
+	
 	$("#alertTitle").html(	"<div class='w3-display-container w3-center w3-col-middle w3-pale-" + color + " w3-leftbar w3-rightbar w3-border-" + color + " w3-large'>" + 
 							"	<i class='bi " + icon + " w3-text-" + color + "'></i>" + title + 
 							"</div>");
-	$("#alertContent").html(content);
-	if(type == "question"){
-		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
+	if(type == "question" || type == "boolean"){
+		if(type == "question"){
+			for(let i=1; i <= noOfInput; i++){
+				content += "	<input class='w3-input w3-border' id='dialogInput"+i+"' type='text' >"; 
+			}
+		}
+		$("#alertContent").html(content);
+		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
 									"確認" + 
 								"</button>" + 
-								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
+								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
 									"取消" + 
 								"</button>");
 	}else{
-		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
+		$("#alertContent").html(content);
+		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
 									"關閉" + 
 								"</button>");
 	}
@@ -120,7 +133,6 @@ function ShowAlert(type, title, content){
 function ShowInfo(){
 	if(windowMode == "tableAlign"){
 		let stHeight = $(".seatingTable").height();
-		console.log(setHeight - stHeight);
 		let setInfoHeight = 50;
 		if(setHeight - stHeight - 100 > 50){
 			setInfoHeight = setHeight - stHeight - 100;
@@ -131,18 +143,33 @@ function ShowInfo(){
 		$(".wolf-lr-info").show();
 	}
 }
+function ShowLog(nextAction){
+	if(nextAction != null){
+		nextAction = "CloseHiddenPopupInfo(); " + nextAction;
+	}else{
+		nextAction = "CloseHiddenPopupInfo();";
+	}
+	$("#logAction").html(	
+		"<i class='wolf-btn-close bi bi-x-circle-fill' onclick='"+nextAction+"'></i>" + 
+		"<button class='wolf-btn w3-btn w3-round-large w3-pale-blue w3-border-blue wolf-margin-x' onclick='"+nextAction+"'>" + 
+		"關閉" + 
+		"</button>"
+	);
+	
+	$("#logDiv").show();
+}
 function GetRandom(){
 	var randomBuffer = new Uint32Array(1);
 	window.crypto.getRandomValues(randomBuffer);
 	return randomBuffer[0] / (0xFFFFFFFF + 1);
 }
-function playSound(x){
-	//testAudio.play(); 
-	document.getElementById(x).play()
-		.then(function(){
-			console.log("Play Success - " + x);
-		}).catch(function(err){
-			console.log("Play Error - " + x);
-			alert(err);
-		});
+function CheckAction(action){
+	//console.log(action);
+	switch(action){
+		case "confirmRole":
+			ShowAlert('question', '確認身份', '請輸入需重新確認身份號碼', "confirmRole($(\"#dialogInput1\").val())", 1);
+			break;
+		default:
+			break;
+	}
 }
