@@ -85,7 +85,7 @@ body {
 	padding: 2px;
 	text-align: center;
 	display:none; 
-	z-index: 2; 
+	z-index: 5; 
 }
 .wolf-table-info{
 	border: 1px solid blue; 
@@ -189,7 +189,7 @@ body {
 	padding: 10px !important;
 	top: 0; 
 	left: 50%;
-	z-index:4;
+	z-index:2;
     
 }
 

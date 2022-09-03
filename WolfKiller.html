@@ -26,9 +26,12 @@
 </head>  
 <body oncontextmenu="return false;"> 
 	<div id="FixScreen" class="w3-display-container"> 
+		<div id="loader-background">
+			<div id="loader"></div>
+		</div>
 		<div id="menuBar" class="wolf-bar w3-bar w3-white w3-display-topmiddle"> 
-			<i class="wolf-bar-item bi bi-question-diamond" onclick="showInfo()"></i>
-			<i class="wolf-bar-item bi bi-pencil-square" onclick="showLog()"></i>
+			<i class="wolf-bar-item bi bi-question-diamond" onclick="showDayMenu()"></i>
+			<i class="wolf-bar-item bi bi-pencil-square" onclick="ShowLog()"></i>
 			<i class="wolf-bar-item bi bi-recycle" onclick="location.reload()"></i>
 			<i class="wolf-bar-item bi bi-sun" onclick="updateAction()"></i>
 			<i class="wolf-bar-item bi bi-moon" onclick="updateAction('nightTime')"></i>
@@ -37,33 +40,60 @@
 		</div> 
 		<div id="menuBar2" class="wolf-bar w3-bar w3-white w3-display-bottommiddle"> 
 			<i class="wolf-bar-item bi bi-question-diamond" onclick="showInfo()"></i>
-			<i class="wolf-bar-item bi bi-pencil-square" onclick="showLog()"></i>
+			<i class="wolf-bar-item bi bi-pencil-square" onclick="ShowLog()"></i>
 			<i class="wolf-bar-item bi bi-recycle" onclick="location.reload()"></i>
 			<i class="wolf-bar-item bi bi-sun" onclick="updateAction()"></i>
 			<i class="wolf-bar-item bi bi-moon" onclick="updateAction('nightTime')"></i>
 			<i class="wolf-bar-item bi bi-music-note-beamed" onclick="playSound('testAudio')"></i>
 			<i class="wolf-bar-item bi bi-person-plus" onclick="versionSelect()"></i>
-		</div> 
-		<div class="wolf-info wolf-lr-info w3-display-topmiddle" style="transform:rotate(180deg); margin-top:25px;" onclick="$(this).hide();">
 		</div>
-		<div class="wolf-info wolf-lr-info w3-display-bottommiddle" style="transform:rotate(0deg); margin-bottom:25px;" onclick="$(this).hide()">
-		</div>
-		<div class="wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge" style="margin-bottom:25px;" onclick="$(this).hide()">
-		</div>
-		<div id="seatingPlan" class="w3-display-container">
-		</div>
-		<div id="playerDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge remarkMode" style="">
+		<div id="seatingPlan" class="w3-display-container"></div>
+		
+		<!-- LR Align -->
+		<div class="wolf-info wolf-lr-info w3-display-topmiddle" style="transform:rotate(180deg); margin-top:25px;" onclick="$(this).hide();"></div>
+		<div class="wolf-info wolf-lr-info w3-display-bottommiddle" style="transform:rotate(0deg); margin-bottom:25px;" onclick="$(this).hide()"></div>
+		
+		<!-- Table Align -->
+		<div class="wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge" style="margin-bottom:25px;"></div>
+		
+		<!-- Popup List -->
+		<div id="playerDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge remarkMode">
 			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="CloseHiddenPopupInfo()"></i>
-			<br/>
 			<div>
-				<div id="confirmingPlayerNo" class="w3-large" width="100%">__號玩家</div>
+				<h5 id="confirmingPlayerNo" class="w3-large" width="100%">__號玩家</h5>
 				<h1 id="confirmingPlayerRule" style="font-weight: bolder;" width="100%">角色</h1>
 				<img id="confirmingPlayerImg" class="" src="./image/actor/Player.png" width="80%">
 			</div>
 		</div>
-		<div id="loader-background">
-			<div id="loader"></div>
+		<div id="alertDiv" class="HiddenPopupInfo HiddenPopupInfo-M w3-container w3-center w3-round-xxlarge">
+			<i class="wolf-btn-close bi bi-x-circle-fill" onclick="CloseHiddenPopupInfo()"></i>
+			<div id="alertTitle" class="w3-container w3-large"></div>
+			<div id="alertContent" class="w3-container w3-medium"></div>
+			<div id="alertAction" class="w3-container w3-medium"></div>
+		</div>
+		<div id="logDiv" class="HiddenPopupInfo HiddenPopupInfo-L w3-container w3-center w3-round-xxlarge">
+			<i class="bi bi-reddit" onclick="updateAction('showAllRole')"></i>
+			<div id="versionLog" class="w3-container w3-medium"></div>
+			<div id="gameLog" class="w3-container w3-medium"></div>
+			<div id="logAction" class="w3-container w3-medium"></div>
+		</div>
+		
+		<div id="dayActionDiv" class="ActionPopup w3-display-container">
+			<div class="w3-display-middle w3-center" style="width:100%">
+				<div class="dayActionDivButton w3-round-xxlarge w3-margin-top" onclick="updateAction('nightTime')">
+					<i class="bi bi-moon w3-xxlarge"></i><br/>入夜
+				</div>
+				<div class="dayActionDivButton w3-round-xxlarge w3-margin-top" onclick="updateAction('killOther')">
+					<i class="bi bi-clipboard-data w3-xxlarge"></i><br/>投票
+				</div>
+				<div class="dayActionDivButton w3-round-xxlarge w3-margin-top" onclick="updateAction('killSelf')">
+					<i class="bi bi-robot w3-xxlarge"></i><br/>自爆
+				</div>
+				<div class="dayActionDivButton w3-round-xxlarge w3-margin-top" onclick="updateAction('checkRule')">
+					<i class="bi bi-fingerprint w3-xxlarge"></i><br/>驗証身份
+				</div>
+			</div>
 		</div>
 	</div>
-</body> 
+</body>
 </html> 
