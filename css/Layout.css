@@ -77,24 +77,29 @@ body {
     display: block;
     outline: 0;
 }
-.wolf-lr-info{
-	border: 1px solid blue; 
-	background-color: rgba(210, 255, 255, 0.98);
-	width: 100%; 
-	left:0% !important; 
+.wolf-info{
 	padding: 2px;
 	text-align: center;
-	display:none; 
-	z-index: 5; 
+	z-index: 2; 
+}
+.wolf-lr-info{
+	border: 1px solid blue; 
+	background-color: rgba(40, 215, 215, 0.7);
+	width: 100%; 
+	padding: 2px;
+	text-align: center;
+	z-index: 2; 
+	left:0% !important; 
+	display:none;
 }
 .wolf-table-info{
 	border: 1px solid blue; 
-	background-color: rgba(210, 255, 255, 0.98);
+	background-color: rgba(40, 215, 215, 0.7);
 	width: 100%; 
 	padding: 2px;
 	text-align: center;
-	display:none; 
 	z-index: 2; 
+	display:none;
 }
 .wolf-td1{
 	width: 25%;
@@ -169,7 +174,7 @@ body {
 #seatingPlan{
 	overflow-y: hidden;
 	overflow-x: hidden;
-	padding: 40px 40px;
+	padding: 20px 20px;
 }
 .seatingTable{
 	transform-origin: top;
@@ -189,7 +194,7 @@ body {
 	padding: 10px !important;
 	top: 0; 
 	left: 50%;
-	z-index:2;
+	z-index:4;
     
 }
 
