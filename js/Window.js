@@ -39,14 +39,15 @@ function setPlayerSeat(){
 		html += 
 			"		</div>" +
 			"	</div>";
-		$("#loader-background").hide();
 		$("#seatingPlan").css('padding', '40px 0px');
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
+		var rowCourt = Math.ceil(totalPlayer/2); 
+		var setSeatingTableHeight = setHeight - 40;
 		var x = 1;
 		html += 
-			"	<table id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"\">";
+			"	<table id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"height:"+setSeatingTableHeight+"px\">";
 		for(var x=1; x<y; x++){
 			html += 
 			"		<tr> " + 
@@ -66,9 +67,15 @@ function setPlayerSeat(){
 			"						"+ x +
 			"					</button> " +
 			"				</div> " +
-			"			</td>" +
-			"			<td class=\"wolf-td2\" style=\"\"> " +
-			"			</td>" +
+			"			</td>" ;
+			if(x==1){
+				html += 
+				"			<td class=\"wolf-td2\" style=\"\" rowspan="+rowCourt+"> " +
+				"			<div class=\"wolf-info\" style=\"transform:translate(-10%,50%) rotate(90deg); margin-top:25px;\" ></div>" + 
+				"			<div class=\"wolf-info\" style=\"transform: translate(10%,-50%) rotate(-90deg); margin-bottom:25px;\"></div>" +
+				"			</td>" ;
+			}
+			html += 
 			"			<td class=\"wolf-td3\" style=\"\"> " +
 			"				<div " +
 			"					id=\"playerCard"+y+"\" " +
@@ -109,21 +116,26 @@ function setPlayerSeat(){
 			"					</button> " +
 			"				</div> " +
 			"			</td>" +
-			"			<td class=\"wolf-td2\" style=\"\"> " +
-			"			</td>" +
 			"			<td class=\"wolf-td3\" style=\"\"> " +
 			"			</td>" + 
 			"		</tr>";
 		}
 		html += 
 			"	</table>";
-		setTimeout(function(){ resizeSeatingPlan() }, 500);	
+		//setTimeout(function(){ resizeSeatingPlan() }, 500);	
 	}
 	$("#seatingPlan").html(html);
+	$("#loader-background").hide();
 }
 function resizeSeatingPlan(){
-	var stHeight = $(".seatingTable").height(); 
-	var scale = setHeight * 0.9 / stHeight;
+	var currentTableHeight = $(".seatingTable tbody").height(); 
+	var setSeatingTableHeight = setHeight - 40;
+	console.log(currentTableHeight);
+	console.log(setSeatingTableHeight);
+	console.log(setSeatingTableHeight/currentTableHeight * 100);
+	if(currentTableHeight > setSeatingTableHeight)
+		$(".wolf-screenseat").css('width', '60%');
+	/*var scale = setHeight * 0.9 / currentTableHeight;
 	if(scale > 1.5){
 		$(".wolf-screenseat").css('width', '150%');
 	}else{
@@ -133,6 +145,6 @@ function resizeSeatingPlan(){
 		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(-'+scale*20+'%, 0%)'); 
 	}else{
 		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(50%, 0%)'); 
-	}
-	$("#loader-background").hide();
+	}*/
+	
 }
