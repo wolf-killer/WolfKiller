@@ -121,7 +121,7 @@ function gameInit(){
 	ShowLog("startConfirmRole()");
 }
 function writeVersionLog(){
-	versionLog += "版本：<br/>玩家："+translate(totalPlayer)+"人<br/>屠邊："+translate(versionMode)+"<br/>角色分佈：";
+	versionLog += "版本：<br/>玩家："+translate(totalPlayer)+"人<br/>勝利條件："+translate(versionMode)+"<br/>角色分佈：";
 	versionLog += "<table class='w3-topbar w3-bottombar w3-border-blue w3-pale-blue' style='width:100%'>";
 	versionLog += "<tr><td style='width:40px;'>神職</td><td>"+godChinArray.toString()+"</td></tr>";
 	versionLog += "<tr><td>平民</td><td>"+villagerChinArray.toString()+"</td></tr>";
