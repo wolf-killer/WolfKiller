@@ -144,6 +144,9 @@ function ShowInfo(){
 	}
 }
 function ShowLog(nextAction){
+	let actionDesc = "關閉";
+	if(nextAction == "startConfirmRole()")
+		actionDesc = "開始確認身份";
 	if(nextAction != null){
 		nextAction = "CloseHiddenPopupInfo(); " + nextAction;
 	}else{
@@ -151,8 +154,8 @@ function ShowLog(nextAction){
 	}
 	$("#logAction").html(	
 		"<i class='wolf-btn-close bi bi-x-circle-fill' onclick='"+nextAction+"'></i>" + 
-		"<button class='wolf-btn w3-btn w3-round-large w3-pale-blue w3-border-blue wolf-margin-x' onclick='"+nextAction+"'>" + 
-		"關閉" + 
+		"<button class='wolf-btn w3-btn w3-round-large w3-pale-blue w3-border-blue wolf-margin-x' onclick='"+nextAction+"'>" +
+		actionDesc + 
 		"</button>"
 	);
 	
