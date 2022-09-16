@@ -1,7 +1,5 @@
 var setWidth = 	document.documentElement.scrollWidth;
 var setHeight = document.documentElement.scrollHeight;
-var wh = 0;
-var landscape = false;
 
 var GetUrlParameter = function GetUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -40,7 +38,6 @@ function SetWindow(){
 	
 	$(".PopupInfo").css("max-height", setHeight-10);
 	$(".HiddenPopupInfo").css("max-height", setHeight-40);
-	wh = setWidth / setHeight;
 }
 function AdjustX(input){
 	if(input=="-"){
@@ -119,7 +116,7 @@ function ShowAlert(type, title, content, nextAction, noOfInput){
 		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
 									"確認" + 
 								"</button>" + 
-								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
+								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
 									"取消" + 
 								"</button>");
 	}else{
