@@ -1,3 +1,20 @@
+var dayAction = 
+"	<div id='dayActionDiv' class='w3-display-middle w3-center' style='width:100%'> " +
+"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('nightTime')'> " +
+"			<i class='bi bi-moon w3-xxlarge'></i><br/>入夜 " +
+"		</div> " +
+"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('killOther')'> " +
+"			<i class='bi bi-clipboard-data w3-xxlarge'></i><br/>投票 " +
+"		</div> " +
+"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('killSelf')'> " +
+"			<i class='bi bi-robot w3-xxlarge'></i><br/>自爆 " +
+"		</div> " +
+"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('checkRule')'> " +
+"			<i class='bi bi-fingerprint w3-xxlarge'></i><br/>驗証身份 " +
+"		</div> " +
+"	</div> ";
+
+
 function setPlayerSeat(){
 	$("#seatingPlan").html("");
 	var html="";
@@ -70,9 +87,10 @@ function setPlayerSeat(){
 			"			</td>" ;
 			if(x==1){
 				html += 
-				"			<td class=\"wolf-td2\" style=\"\" rowspan="+rowCourt+"> " +
-				"			<div class=\"wolf-info\" style=\"transform:translate(-10%,50%) rotate(90deg); margin-top:25px;\" ></div>" + 
-				"			<div class=\"wolf-info\" style=\"transform: translate(10%,-50%) rotate(-90deg); margin-bottom:25px;\"></div>" +
+				"			<td class=\"wolf-td2 w3-display-container\" style=\"\" rowspan="+rowCourt+"> " +
+				"			<div class=\"wolf-info w3-display-left w3-xlarge\" style=\"transform:translate(-10%,50%) rotate(90deg); margin-top:25px;\" ></div>" + 
+							dayAction + 
+				"			<div class=\"wolf-info w3-display-right w3-xlarge\" style=\"transform: translate(10%,-50%) rotate(-90deg); margin-bottom:25px;\"></div>" +
 				"			</td>" ;
 			}
 			html += 
@@ -122,7 +140,7 @@ function setPlayerSeat(){
 		}
 		html += 
 			"	</table>";
-		//setTimeout(function(){ resizeSeatingPlan() }, 500);	
+		setTimeout(function(){ resizeSeatingPlan() }, 500);	
 	}
 	$("#seatingPlan").html(html);
 	$("#loader-background").hide();
@@ -130,21 +148,9 @@ function setPlayerSeat(){
 function resizeSeatingPlan(){
 	var currentTableHeight = $(".seatingTable tbody").height(); 
 	var setSeatingTableHeight = setHeight - 40;
-	console.log(currentTableHeight);
-	console.log(setSeatingTableHeight);
-	console.log(setSeatingTableHeight/currentTableHeight * 100);
-	if(currentTableHeight > setSeatingTableHeight)
-		$(".wolf-screenseat").css('width', '60%');
-	/*var scale = setHeight * 0.9 / currentTableHeight;
-	if(scale > 1.5){
-		$(".wolf-screenseat").css('width', '150%');
-	}else{
-		$(".wolf-screenseat").css('width', scale*100+ '%');
+	var scale = setSeatingTableHeight/currentTableHeight * 100;
+	if(currentTableHeight > setSeatingTableHeight){
+		$(".wolf-screenseat").css('width', scale + '%');
+		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(' + (100 - scale) + '%, 0%)'); 
 	}
-	if(scale > 1){
-		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(-'+scale*20+'%, 0%)'); 
-	}else{
-		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(50%, 0%)'); 
-	}*/
-	
 }
