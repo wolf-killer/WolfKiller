@@ -1,18 +1,25 @@
-function setPlayerSeat(){
+var seatingTableCol = 4;
+var seatingTableRow = 0;
+function setPlayerSeat(manualSetCol){
 	$("#seatingPlan").html("");
 	var html="";
 	
 	if(windowMode == "tableAlign"){
 			//show as table
-		if(setWidth > 500 || setWidth < 400){
-			loopWidth = '25%';
+		if(manualSetCol != null){
+			seatingTableCol = manualSetCol;
+			if(Math.ceil(totalPlayer / seatingTableCol) == seatingTableRow){
+				seatingTableCol+= 1;
+				setPlayerSeat(seatingTableCol);
+			}
 		}else{
 			if(totalPlayer < 13){
-				loopWidth = '33%';
-			}else{
-				loopWidth = '25%';
+				seatingTableCol = 3;
 			}
 		}
+		seatingTableRow = Math.ceil(totalPlayer / seatingTableCol);
+		loopWidth = 100/seatingTableCol + "%";
+		
 		html += 
 			"	<div id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"width:100%;\">" +
 			"		<div class=\"w3-row\" style=\"\"> ";
@@ -40,7 +47,6 @@ function setPlayerSeat(){
 			"		</div>" +
 			"	</div>"+
 			"<div class=\"wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge\" style=\"\" ></div>";
-		//$("#seatingPlan").css('padding', '40px 0px');
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
@@ -122,18 +128,22 @@ function setPlayerSeat(){
 		html += 
 			"	</table>";
 		$("#FixScreen").append( 
-				"			<div class=\"wolf-info w3-display-middle w3-xlarge\" style=\"transform: translate(-70%,-50%) rotate(90deg)\"></div>" + 
-				"			<div class=\"wolf-info w3-display-middle w3-xlarge\" style=\"transform: translate(-30%,-50%) rotate(-90deg)\"></div>" +
-				"			<div class=\"wolf-info-action w3-display-topmiddle w3-small\" style=\"transform: translate(-85%,0%) rotate(180deg);\"></div>" + 
-				"			<div class=\"wolf-info-action w3-display-bottommiddle w3-small\" style=\"transform: translate(-15%,0%) rotate(0deg);\"></div>" );
+				"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" style=\"width:" + setHeight + "px; transform: translate(-53%,-50%) rotate(90deg)\"></div>" + 
+				"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" style=\"width:" + setHeight + "px; transform: translate(-47%,-50%) rotate(-90deg)\"></div>" +
+				"			<div class=\"wolf-info-action w3-display-topmiddle w3-small w3-center\" style=\"transform: translate(-50%,0%) rotate(180deg);\"></div>" + 
+				"			<div class=\"wolf-info-action w3-display-bottommiddle w3-small w3-center\" style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" );
 	}
-	setTimeout(function(){ resizeSeatingPlan() }, 500);	
+	setTimeout(function(){ resizeSeatingPlan() }, 50);	
 	$("#seatingPlan").html(html);
 }
 function resizeSeatingPlan(){
 	if(windowMode == "tableAlign"){
-		var currentTableHeight = $(".seatingTable").height(); 
-		$(".wolf-info").css('height', setHeight-currentTableHeight-10)
+		var currentTableHeight = $(".seatingTable").height();
+		var diff = setHeight-currentTableHeight;
+		if(diff<100){ 
+			setPlayerSeat(seatingTableCol+1);
+			return;
+		}
 	}else if(windowMode == "lrAlign"){	
 		var currentTableHeight = $(".seatingTable tbody").height(); 
 		var scale = setHeight/currentTableHeight * 100;

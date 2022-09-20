@@ -21,7 +21,7 @@ var log = "<table class='dayLog w3-pale-blue'>";
 
 var confirmPlayer = 0;
 
-$(window).on("load", function(){
+$(window).on("DOMContentLoaded", function(){
 	$("#loader-background").show();
 	if(totalActorArray.length < 6){
 		ShowAlert("alert", "錯誤", "重啟遊戲");
