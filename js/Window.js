@@ -1,20 +1,3 @@
-var dayAction = 
-"	<div id='dayActionDiv' class='w3-display-middle w3-center' style='width:100%'> " +
-"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('nightTime')'> " +
-"			<i class='bi bi-moon w3-xxlarge'></i><br/>入夜 " +
-"		</div> " +
-"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('killOther')'> " +
-"			<i class='bi bi-clipboard-data w3-xxlarge'></i><br/>投票 " +
-"		</div> " +
-"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('killSelf')'> " +
-"			<i class='bi bi-robot w3-xxlarge'></i><br/>自爆 " +
-"		</div> " +
-"		<div class='dayActionDivButton w3-round-xxlarge w3-margin-top' onclick='updateAction('checkRule')'> " +
-"			<i class='bi bi-fingerprint w3-xxlarge'></i><br/>驗証身份 " +
-"		</div> " +
-"	</div> ";
-
-
 function setPlayerSeat(){
 	$("#seatingPlan").html("");
 	var html="";
@@ -31,7 +14,7 @@ function setPlayerSeat(){
 			}
 		}
 		html += 
-			"	<div id=\"for-"+totalPlayer+"-player\" class=\"seatingTable w3-container\" style=\"width:100%;\">" +
+			"	<div id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"width:100%;\">" +
 			"		<div class=\"w3-row\" style=\"\"> ";
 		for(var loop=1; loop<=totalPlayer; loop++){
 			html += 
@@ -55,16 +38,16 @@ function setPlayerSeat(){
 		}
 		html += 
 			"		</div>" +
-			"	</div>";
-		$("#seatingPlan").css('padding', '40px 0px');
+			"	</div>"+
+			"<div class=\"wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge\" style=\"\" ></div>";
+		//$("#seatingPlan").css('padding', '40px 0px');
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
 		var rowCourt = Math.ceil(totalPlayer/2); 
-		var setSeatingTableHeight = setHeight - 40;
 		var x = 1;
 		html += 
-			"	<table id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"height:"+setSeatingTableHeight+"px\">";
+			"	<table id=\"for-"+totalPlayer+"-player\" class=\"seatingTable\" style=\"height:"+setHeight+"px\">";
 		for(var x=1; x<y; x++){
 			html += 
 			"		<tr> " + 
@@ -88,9 +71,7 @@ function setPlayerSeat(){
 			if(x==1){
 				html += 
 				"			<td class=\"wolf-td2 w3-display-container\" style=\"\" rowspan="+rowCourt+"> " +
-				"			<div class=\"wolf-info w3-display-left w3-xlarge\" style=\"transform:translate(-10%,50%) rotate(90deg); margin-top:25px;\" ></div>" + 
-							dayAction + 
-				"			<div class=\"wolf-info w3-display-right w3-xlarge\" style=\"transform: translate(10%,-50%) rotate(-90deg); margin-bottom:25px;\"></div>" +
+				
 				"			</td>" ;
 			}
 			html += 
@@ -140,17 +121,26 @@ function setPlayerSeat(){
 		}
 		html += 
 			"	</table>";
-		setTimeout(function(){ resizeSeatingPlan() }, 500);	
+		$("#FixScreen").append( 
+				"			<div class=\"wolf-info w3-display-middle w3-xlarge\" style=\"transform: translate(-70%,-50%) rotate(90deg)\"></div>" + 
+				"			<div class=\"wolf-info w3-display-middle w3-xlarge\" style=\"transform: translate(-30%,-50%) rotate(-90deg)\"></div>" +
+				"			<div class=\"wolf-info-action w3-display-topmiddle w3-small\" style=\"transform: translate(-85%,0%) rotate(180deg);\"></div>" + 
+				"			<div class=\"wolf-info-action w3-display-bottommiddle w3-small\" style=\"transform: translate(-15%,0%) rotate(0deg);\"></div>" );
 	}
+	setTimeout(function(){ resizeSeatingPlan() }, 500);	
 	$("#seatingPlan").html(html);
-	$("#loader-background").hide();
 }
 function resizeSeatingPlan(){
-	var currentTableHeight = $(".seatingTable tbody").height(); 
-	var setSeatingTableHeight = setHeight - 40;
-	var scale = setSeatingTableHeight/currentTableHeight * 100;
-	if(currentTableHeight > setSeatingTableHeight){
-		$(".wolf-screenseat").css('width', scale + '%');
-		$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(' + (100 - scale) + '%, 0%)'); 
+	if(windowMode == "tableAlign"){
+		var currentTableHeight = $(".seatingTable").height(); 
+		$(".wolf-info").css('height', setHeight-currentTableHeight-10)
+	}else if(windowMode == "lrAlign"){	
+		var currentTableHeight = $(".seatingTable tbody").height(); 
+		var scale = setHeight/currentTableHeight * 100;
+		if(currentTableHeight > setHeight){
+			$(".wolf-screenseat").css('width', scale + '%');
+			$(".wolf-td3 .wolf-screenseat").css('transform', 'translate(' + (100 - scale) + '%, 0%)'); 
+		}
 	}
+	$("#loader-background").hide();
 }

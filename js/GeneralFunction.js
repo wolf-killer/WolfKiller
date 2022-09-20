@@ -30,7 +30,7 @@ function SetWindow(){
 	setHeight = GetUrlParameter('setHeight')?
 				GetUrlParameter('setHeight'):
 				document.documentElement.scrollHeight;
-	console.log("Available width/height: " + setWidth + "*" + screen.availHeight + " || w/h: " + setWidth / setHeight);
+	console.log("Available width/height: " + setWidth + "*" + screen.availHeight);
 	$("#FixScreen").css("height", setHeight);
 	$("#FixScreen").css("width", setWidth);
 	$("#seatingPlan").css("height", setHeight);
@@ -39,21 +39,40 @@ function SetWindow(){
 	$(".PopupInfo").css("max-height", setHeight-10);
 	$(".HiddenPopupInfo").css("max-height", setHeight-40);
 }
+function ManualAdjustXY(){
+	var x = $("#manualX").val();
+	var y = $("#manualY").val();
+
+	AdjustX(x);
+	AdjustY(y);
+}
 function AdjustX(input){
 	if(input=="-"){
-		setWidth = setWidth - 10;
+		setWidth = parseInt(setWidth) - 10;
+	}else if(input=="+"){
+		setWidth = parseInt(setWidth) + 10;
 	}else{
-		setWidth = setWidth + 10;
+		setWidth = parseInt(input);
 	}
+	$("#FixScreen").css("height", setHeight);
 	$("#FixScreen").css("width", setWidth);
+	
+	$(".PopupInfo").css("max-height", setHeight-10);
+	$(".HiddenPopupInfo").css("max-height", setHeight-40);
 }
 function AdjustY(input){
 	if(input=="-"){
-		setHeight = setHeight - 10;
+		setHeight = parseInt(setHeight) - 10;
+	}else if(input=="+"){
+		setHeight = parseInt(setHeight) + 10;
 	}else{
-		setHeight = setHeight + 10;
+		setHeight = parseInt(input);
 	}
 	$("#FixScreen").css("height", setHeight);
+	$("#FixScreen").css("width", setWidth);
+	
+	$(".PopupInfo").css("max-height", setHeight-10);
+	$(".HiddenPopupInfo").css("max-height", setHeight-40);
 }
 function CloseHiddenPopupInfo(){
 	$(".HiddenPopupInfo").css("display","none");
@@ -81,7 +100,15 @@ function UpdateBtn(mode, version){
 		windowMode = version;
 	}
 }
-function ShowAlert(type, title, content, nextAction, noOfInput){
+function ShowAlert(type, title, content, nextAction, inputObject){
+	/* Sample inputObject
+	var inputObject = [{
+		id: id,
+		type: type,
+		desc: desc,
+		defaultValue: defaultValue
+	}];
+	*/
 	$("#alertDiv").removeClass("alertMode questionMode remarkMode");
 	var icon, color;
 	if(type == "alert"){
@@ -108,8 +135,9 @@ function ShowAlert(type, title, content, nextAction, noOfInput){
 							"</div>");
 	if(type == "question" || type == "boolean"){
 		if(type == "question"){
-			for(let i=1; i <= noOfInput; i++){
-				content += "	<input class='w3-input w3-border' id='dialogInput"+i+"' type='text' >"; 
+			for(let i=0; i < inputObject.length; i++){
+				content += "	" + inputObject[i].desc + ": " + 
+							"<input class='w3-input w3-border' id='"+inputObject[i].id+"' type='"+inputObject[i].type+"' value='"+inputObject[i].defaultValue+"'>"; 
 			}
 		}
 		$("#alertContent").html(content);
@@ -126,19 +154,6 @@ function ShowAlert(type, title, content, nextAction, noOfInput){
 								"</button>");
 	}
 	$("#alertDiv").css("display","block");
-}
-function ShowInfo(){
-	if(windowMode == "tableAlign"){
-		let stHeight = $(".seatingTable").height();
-		let setInfoHeight = 50;
-		if(setHeight - stHeight - 100 > 50){
-			setInfoHeight = setHeight - stHeight - 100;
-		}
-		$(".wolf-table-info").css("height", setInfoHeight+"px");
-		$(".wolf-table-info").show();
-	}else if(windowMode == "lrAlign"){
-		$(".wolf-lr-info").show();
-	}
 }
 function ShowLog(nextAction){
 	let actionDesc = "關閉";
@@ -164,12 +179,28 @@ function GetRandom(){
 	return randomBuffer[0] / (0xFFFFFFFF + 1);
 }
 function CheckAction(action){
-	//console.log(action);
 	switch(action){
 		case "confirmRole":
-			ShowAlert('question', '確認身份', '請輸入需重新確認身份號碼', "confirmRole($(\"#dialogInput1\").val())", 1);
+			var inputObject = [{
+				id: 'reConfirmNumber',
+				type: 'number',
+				desc: '玩家號碼',
+				defaultValue: ''
+			}];
+			ShowAlert(	"question", 
+						"確認身份", 
+						"請輸入需重新確認身份號碼", 
+						"confirmRole($(\"#reConfirmNumber\").val())", 
+						inputObject);
 			break;
 		default:
 			break;
 	}
+}
+function CreateButton(icon, display, onclickfn){
+	var btn = 	"<button class='wolf-btn w3-btn w3-borde w3-small' onclick='"+onclickfn+"'>" + 
+				"<i class='bi "+icon+"'></i><br/>" + 
+				display + 
+				"</button>";
+	return btn;
 }

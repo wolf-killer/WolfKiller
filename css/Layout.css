@@ -65,6 +65,7 @@ body {
 	margin-left: 16px !important;
 	margin-right: 16px !important;
 }
+/*
 .wolf-bar{
 	height: 22px;
 	z-index: 5;
@@ -77,30 +78,23 @@ body {
     display: block;
     outline: 0;
 }
+*/
 .wolf-info{
 	padding: 2px;
 	text-align: center;
 	z-index: 2; 
 }
-.wolf-lr-info{
-	border: 1px solid blue; 
-	background-color: rgba(40, 215, 215, 0.7);
-	width: 100%; 
-	padding: 2px;
-	text-align: center;
-	z-index: 2; 
-	left:0% !important; 
-	display:none;
-}
 .wolf-table-info{
-	border: 1px solid blue; 
 	background-color: rgba(40, 215, 215, 0.7);
 	width: 100%; 
-	padding: 2px;
-	text-align: center;
-	z-index: 2; 
-	display:none;
 }
+.wolf-info-action{
+	width: 80%;
+}
+.wolf-info-action > .wolf-btn{
+	margin: 0px 4px;
+}
+
 .wolf-td1{
 	width: 25%;
 	text-align: left !important;
@@ -174,7 +168,7 @@ body {
 #seatingPlan{
 	overflow-y: hidden;
 	overflow-x: hidden;
-	padding: 20px 20px;
+	padding: 0px 20px;
 }
 .seatingTable{
 	transform-origin: top;
@@ -182,6 +176,9 @@ body {
 }
 .seatingTable .wolf-td2{
 	background-color: rgba(40, 215, 215, 0.5);
+}
+.playerCard{
+	z-index: 2;
 }
 #playerDiv{
 	position: absolute; 
@@ -195,30 +192,12 @@ body {
 	top: 0; 
 	left: 50%;
 	z-index:4;
-    
 }
-
-
 
 
 
 
 /*
-#menu{
-	padding: 10px;
-	background-color: #55B1D6;
-	height: 40%;		
-	width:50%; 
-	position: absolute; 
-	z-index:10;
-}
-#menu i{
-	margin-right: 10px;
-}
-#menu button{
-	margin: 10px;
-	width: 80%;
-}*/
 #logDiv{
 	background-color: #55B1D6;	
 	width:90%; 
@@ -237,7 +216,7 @@ body {
 	left: 5%;
 	z-index:99;
 }
-
+*/
 .playerImg{
 	width:100%; 
 	position: relative; 

@@ -136,7 +136,11 @@ function startConfirmRole(){
 	$("#playerImg"+confirmPlayer).addClass("confirming");
 	$(".wolf-info").html("確認身份"+
 					"<i onclick=\"CheckAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:20px;\"></i>");
-	ShowInfo();
+	$(".wolf-info-action").html(
+					CreateButton('bi-moon','1','alert(123)')+
+					CreateButton('bi-clipboard-data','2','alert(123)')+
+					CreateButton('bi-robot','3','alert(123)') )
+	//ShowInfo();
 }
 function confirmRole(noOfPlayer){ 
 	action = "confirmRoleING";
@@ -232,18 +236,20 @@ function confirmRole(noOfPlayer){
 function hiddenRole(noOfPlayer){ 
 	$("#playerImg"+noOfPlayer).attr("src",imagePlayer);
 	$("#playerDiv").hide();
-	ShowInfo();
-} 
+	//ShowInfo();
+}
 function checkNext(){
 	$("#playerImg"+confirmPlayer).removeClass("confirming");
 	confirmPlayer++;
 	$("#playerImg"+confirmPlayer).addClass("confirming");	
 	action = "confirmRole";
 	if(confirmPlayer > totalPlayer){
-		showDayMenu();
+		$(".wolf-info").html("準備入夜"+
+			CreateButton('bi-moon','入夜閉眼','alert(\'天黑請閉眼\')') + 
+			CreateButton('bi-person-bounding-box','確認身份','CheckAction(\'confirmRole\')') );
 	}
 }
-function showDayMenu(){
+/*function showDayMenu(){
 	if(windowMode == "tableAlign"){
 		/// working
 	}else if(windowMode == "lrAlign"){
@@ -252,4 +258,4 @@ function showDayMenu(){
 		$("#dayActionDiv").css("width", setDayMenuWidth);
 		$("#dayActionDiv").show();
 	}
-}
+}*/
