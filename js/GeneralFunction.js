@@ -136,8 +136,8 @@ function ShowAlert(type, title, content, nextAction, inputObject){
 	if(type == "question" || type == "boolean"){
 		if(type == "question"){
 			for(let i=0; i < inputObject.length; i++){
-				content += "	" + inputObject[i].desc + ": " + 
-							"<input class='w3-input w3-border' id='"+inputObject[i].id+"' type='"+inputObject[i].type+"' value='"+inputObject[i].defaultValue+"'>"; 
+				content += "<br/>" + inputObject[i].desc + ": " + 
+							"<input class='w3-input w3-border' id='"+inputObject[i].id+"' type='"+inputObject[i].type+"' value='"+inputObject[i].defaultValue+"'><br/>"; 
 			}
 		}
 		$("#alertContent").html(content);
@@ -197,10 +197,27 @@ function CheckAction(action){
 			break;
 	}
 }
-function CreateButton(icon, display, onclickfn){
-	var btn = 	"<button class='wolf-btn w3-btn w3-borde w3-small' onclick='"+onclickfn+"'>" + 
-				"<i class='bi "+icon+"'></i><br/>" + 
-				display + 
-				"</button>";
+function CreateButton(onclickfn, icon, display, hover){
+	var btn = 	"<span class='wolf-tag w3-medium' onclick='ShowHoverTag($(this))' ondblclick='"+onclickfn+"' >";
+	if(icon != null)
+		btn += 		"<i class='bi "+icon+" wolf-btn w3-btn w3-circle'></i>";
+	if(display != null)
+		btn += 		"<span style=\"\">"+display+"</span>";
+	if(hover != null)
+		btn += 		"<span class=\"wolf-hovertag\"><b>"+hover+"</b></span>";
+		btn += 	"</span>";
 	return btn;
+}
+function ShowHoverTag(e){
+	var tag = $(e.context.querySelector(".wolf-hovertag"));
+	if(tag.length == 0){
+		e.dblclick();
+		return;
+	}
+	if(tag.css("display") == "block"){
+		e.dblclick();
+	}else{
+		tag.css("display", "block");
+	}
+	setTimeout(function(){  tag.css("display", "none"); }, 3000); // 1000ms = 1s
 }
