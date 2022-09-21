@@ -134,13 +134,14 @@ function startConfirmRole(){
 	action = "confirmRole"; 
 	confirmPlayer ++;
 	$("#playerImg"+confirmPlayer).addClass("confirming");
-	$(".wolf-info").html("確認身份"+
-					"<i onclick=\"CheckAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:20px;\"></i>");
-	$(".wolf-info-action").html(
-					CreateButton('bi-moon','1','alert(123)')+
-					CreateButton('bi-clipboard-data','2','alert(123)')+
-					CreateButton('bi-robot','3','alert(123)') )
-	//ShowInfo();
+	$(".wolf-info-desc").html("確認身份" + 
+							"<i onclick=\"CheckAction('confirmRole')\" class=\"bi bi-person-bounding-box\" style=\"margin-left:10px;\"></i>");
+	$(".wolf-info-action").html(/*CreateButton("CheckAction(\"confirmRole\")", "bi-person-bounding-box")*/);
+	$(".wolf-menu").append(
+					CreateButton("GoPage(\"VersionSelecter\", {})", "bi-recycle", null, "重啟遊戲")+
+					CreateButton("CheckAction(\"confirmRole\")", "bi-clipboard-data")+
+					CreateButton("CheckAction(\"confirmRole\")", "bi-robot") 
+					);
 }
 function confirmRole(noOfPlayer){ 
 	action = "confirmRoleING";
@@ -236,26 +237,18 @@ function confirmRole(noOfPlayer){
 function hiddenRole(noOfPlayer){ 
 	$("#playerImg"+noOfPlayer).attr("src",imagePlayer);
 	$("#playerDiv").hide();
-	//ShowInfo();
 }
 function checkNext(){
 	$("#playerImg"+confirmPlayer).removeClass("confirming");
 	confirmPlayer++;
 	$("#playerImg"+confirmPlayer).addClass("confirming");	
 	action = "confirmRole";
-	if(confirmPlayer > totalPlayer){
-		$(".wolf-info").html("準備入夜"+
-			CreateButton('bi-moon','入夜閉眼','alert(\'天黑請閉眼\')') + 
-			CreateButton('bi-person-bounding-box','確認身份','CheckAction(\'confirmRole\')') );
+	/*if(confirmPlayer > totalPlayer){*/
+	if(confirmPlayer > 1){
+		$(".wolf-info-desc").html("準備入夜");
+		$(".wolf-info-action").html(
+			CreateButton("CheckAction(\"confirmRole\")", "bi-person-bounding-box",  "重新確認") + 
+			CreateButton("alert(\"天黑請閉眼\")", "bi-moon", "天黑請閉眼")
+		);
 	}
 }
-/*function showDayMenu(){
-	if(windowMode == "tableAlign"){
-		/// working
-	}else if(windowMode == "lrAlign"){
-		let setDayMenuWidth = $(".seatingTable .wolf-td2").width() * 0.7;			
-		$("#dayActionDiv").css("height", setHeight);
-		$("#dayActionDiv").css("width", setDayMenuWidth);
-		$("#dayActionDiv").show();
-	}
-}*/
