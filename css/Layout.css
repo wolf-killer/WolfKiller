@@ -188,6 +188,9 @@ body {
 	background-color: rgba(210, 255, 255, 0.95);
 	border: 3px solid blue;
 }
+#alertAction > button {
+	margin: 0px 16px;
+}
 #seatingPlan{
 	overflow-y: hidden;
 	overflow-x: hidden;
