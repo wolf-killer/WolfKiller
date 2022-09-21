@@ -46,7 +46,12 @@ function setPlayerSeat(manualSetCol){
 		html += 
 			"		</div>" +
 			"	</div>"+
-			"<div class=\"wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge\" style=\"\" ></div>";
+			"<div class=\"wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge\" style=\"\" >" + 
+			"	<span class=\"wolf-info-desc\"></span><br/>" + 
+			"	<span class=\"wolf-info-action\"></span>" + 
+			"</div>" + 
+			"<div class=\"wolf-menu w3-display-bottommiddle w3-small w3-center\" "+
+			"		style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" 
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
@@ -128,10 +133,21 @@ function setPlayerSeat(manualSetCol){
 		html += 
 			"	</table>";
 		$("#FixScreen").append( 
-				"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" style=\"width:" + setHeight + "px; transform: translate(-53%,-50%) rotate(90deg)\"></div>" + 
-				"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" style=\"width:" + setHeight + "px; transform: translate(-47%,-50%) rotate(-90deg)\"></div>" +
-				"			<div class=\"wolf-info-action w3-display-topmiddle w3-small w3-center\" style=\"transform: translate(-50%,0%) rotate(180deg);\"></div>" + 
-				"			<div class=\"wolf-info-action w3-display-bottommiddle w3-small w3-center\" style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" );
+			"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
+			"				style=\"width:" + setHeight + "px; transform: translate(-54%,-50%) rotate(90deg);\">" +
+			"				<span class=\"wolf-info-desc\"></span><br/>" + 
+			"				<span class=\"wolf-info-action\"></span>" + 
+			"			</div>" + 
+			"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
+			"				style=\"width:" + setHeight + "px; transform: translate(-46%,-50%) rotate(-90deg);\">" +
+			"				<span class=\"wolf-info-desc\"></span><br/>" + 
+			"				<span class=\"wolf-info-action\"></span>" + 
+			"			</div>" + 
+			"			<div class=\"wolf-menu w3-display-topmiddle w3-small w3-center\" " + 
+			"				style=\"transform: translate(-50%,0%) rotate(180deg);\"></div>" + 
+			"			<div class=\"wolf-menu w3-display-bottommiddle w3-small w3-center\" "+
+			"				style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" 
+			);
 	}
 	setTimeout(function(){ resizeSeatingPlan() }, 50);	
 	$("#seatingPlan").html(html);
