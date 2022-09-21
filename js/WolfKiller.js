@@ -139,11 +139,14 @@ function startConfirmRole(){
 	$(".wolf-info-action").html(/*CreateButton("CheckAction(\"confirmRole\")", "bi-person-bounding-box")*/);
 	$(".wolf-menu").append(
 					CreateButton("GoPage(\"VersionSelecter\", {})", "bi-recycle", null, "重啟遊戲")+
-					CreateButton("CheckAction(\"confirmRole\")", "bi-clipboard-data")+
-					CreateButton("CheckAction(\"confirmRole\")", "bi-robot") 
+					CreateButton("ShowLog()", "bi-clipboard-data", null, "顯示遊戲資料")
 					);
 }
 function confirmRole(noOfPlayer){ 
+	if(noOfPlayer > totalPlayer || noOfPlayer < 1){
+		ShowAlert("alert", "錯誤", "身份號碼錯誤");
+		return;
+	}
 	action = "confirmRoleING";
 	if(setWidth < 500)
 		$("#playerDiv").show();
@@ -226,10 +229,7 @@ function confirmRole(noOfPlayer){
 			$("#confirmingPlayerRule").html(translate(player[noOfPlayer]));
 			break; 
 		default: 
-			$("#playerImg"+noOfPlayer).attr("src",imagePlayer); 
-			$("#confirmingPlayerImg").attr("src",imagePlayer); 
-			$("#confirmingPlayerNo").html(translate(noOfPlayer)+"號玩家");
-			$("#confirmingPlayerRule").html(translate(player[noOfPlayer]));
+			ShowAlert("alert", "錯誤", "身份號碼錯誤");
 			break; 
 	} 
 	setTimeout(function(){  hiddenRole(noOfPlayer); checkNext(); }, 1500); // 1000ms = 1s	 
@@ -247,8 +247,17 @@ function checkNext(){
 	if(confirmPlayer > 1){
 		$(".wolf-info-desc").html("準備入夜");
 		$(".wolf-info-action").html(
-			CreateButton("CheckAction(\"confirmRole\")", "bi-person-bounding-box",  "重新確認") + 
+			CreateButton("CheckAction(\"confirmRole\")", "bi-person-bounding-box", "重新確認") + 
 			CreateButton("alert(\"天黑請閉眼\")", "bi-moon", "天黑請閉眼")
 		);
+		if($(".wolf-menu").find(".bi-person-bounding-box").length < 1)
+			$(".wolf-menu").append(
+				CreateButton("CheckAction(\"confirmRole\")", "bi-person-bounding-box", null, "重新確認身份")
+			);	
+		if($(".wolf-menu").find(".bi-moon").length < 1)		
+			$(".wolf-menu").append(			
+				CreateButton("alert(\"天黑請閉眼\")", "bi-moon", null, "進入黑夜")
+				);
+		
 	}
 }

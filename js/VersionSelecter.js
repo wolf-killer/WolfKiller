@@ -97,18 +97,26 @@ function manualAdjust(){
 			id: "manualX",
 			type: "number",
 			desc: "闊度",
-			defaultValue: setWidth
+			defaultValue: setWidth,
+			prop: {
+				max: setWidth,
+				min: 100
+			}
 		},{
 			id: "manualY",
 			type: "number",
 			desc: "高度",
-			defaultValue: setHeight
+			defaultValue: setHeight,
+			prop: {
+				max: setHeight,
+				min: 100
+			}
 		}];
 		var content = "現時闊度：" + setWidth + "<br/>現時高度：" + setHeight + "<br/>";
 		ShowAlert(	"question", 
 					"手動調整畫面大小", 
 					content, 
-					"ManualAdjustXY();$(\"#windowAdjuster\").show();", 
+					"ManualAdjustXY();$(\'#windowAdjuster\').show();", 
 					inputObject);
 	}
 }

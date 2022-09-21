@@ -45,13 +45,19 @@ function setPlayerSeat(manualSetCol){
 		}
 		html += 
 			"		</div>" +
-			"	</div>"+
-			"<div class=\"wolf-info wolf-table-info w3-display-bottommiddle w3-xlarge\" style=\"\" >" + 
-			"	<span class=\"wolf-info-desc\"></span><br/>" + 
-			"	<span class=\"wolf-info-action\"></span>" + 
-			"</div>" + 
-			"<div class=\"wolf-menu w3-display-bottommiddle w3-small w3-center\" "+
-			"		style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" 
+			"	</div>";
+		
+		if($("#FixScreen").find("div.wolf-info").length < 1)
+			$("#FixScreen").append( 
+				"<div class=\"wolf-table-info w3-display-bottommiddle\">" + 
+				"<div class=\"wolf-info w3-xlarge\" style=\"margin-bottom: 10px;\" >" + 
+				"	<span class=\"wolf-info-desc\"></span><br/>" + 
+				"	<span class=\"wolf-info-action\"></span>" + 
+				"</div>" + 
+				"<div class=\"wolf-menu w3-small w3-center\" "+
+				"		style=\"\"></div>" + 
+				"</div>"
+			);
 	}else if(windowMode == "lrAlign"){	
 			//show only left-right
 		var y = totalPlayer;
@@ -133,20 +139,20 @@ function setPlayerSeat(manualSetCol){
 		html += 
 			"	</table>";
 		$("#FixScreen").append( 
-			"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
-			"				style=\"width:" + setHeight + "px; transform: translate(-54%,-50%) rotate(90deg);\">" +
-			"				<span class=\"wolf-info-desc\"></span><br/>" + 
-			"				<span class=\"wolf-info-action\"></span>" + 
-			"			</div>" + 
-			"			<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
-			"				style=\"width:" + setHeight + "px; transform: translate(-46%,-50%) rotate(-90deg);\">" +
-			"				<span class=\"wolf-info-desc\"></span><br/>" + 
-			"				<span class=\"wolf-info-action\"></span>" + 
-			"			</div>" + 
-			"			<div class=\"wolf-menu w3-display-topmiddle w3-small w3-center\" " + 
-			"				style=\"transform: translate(-50%,0%) rotate(180deg);\"></div>" + 
-			"			<div class=\"wolf-menu w3-display-bottommiddle w3-small w3-center\" "+
-			"				style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" 
+			"	<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
+			"		style=\"width:" + setHeight + "px; transform: translate(-54%,-50%) rotate(90deg);\">" +
+			"		<span class=\"wolf-info-desc\"></span><br/>" + 
+			"		<span class=\"wolf-info-action\"></span>" + 
+			"	</div>" + 
+			"	<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
+			"		style=\"width:" + setHeight + "px; transform: translate(-46%,-50%) rotate(-90deg);\">" +
+			"		<span class=\"wolf-info-desc\"></span><br/>" + 
+			"		<span class=\"wolf-info-action\"></span>" + 
+			"	</div>" + 
+			"	<div class=\"wolf-menu w3-display-topmiddle w3-small w3-center\" " + 
+			"		style=\"transform: translate(-50%,0%) rotate(180deg);\"></div>" + 
+			"	<div class=\"wolf-menu w3-display-bottommiddle w3-small w3-center\" "+
+			"		style=\"transform: translate(-50%,0%) rotate(0deg);\"></div>" 
 			);
 	}
 	setTimeout(function(){ resizeSeatingPlan() }, 50);	

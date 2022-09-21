@@ -106,7 +106,11 @@ function ShowAlert(type, title, content, nextAction, inputObject){
 		id: id,
 		type: type,
 		desc: desc,
-		defaultValue: defaultValue
+		defaultValue: defaultValue,
+		prop: {
+			max: max,
+			min: 1
+		}
 	}];
 	*/
 	$("#alertDiv").removeClass("alertMode questionMode remarkMode");
@@ -136,20 +140,28 @@ function ShowAlert(type, title, content, nextAction, inputObject){
 	if(type == "question" || type == "boolean"){
 		if(type == "question"){
 			for(let i=0; i < inputObject.length; i++){
-				content += "<br/>" + inputObject[i].desc + ": " + 
-							"<input class='w3-input w3-border' id='"+inputObject[i].id+"' type='"+inputObject[i].type+"' value='"+inputObject[i].defaultValue+"'><br/>"; 
+				content += 	inputObject[i].desc + ": " + 
+							"<input class=\"w3-input w3-border\" " + 
+							" 		id=\""+inputObject[i].id+"\" " + 
+							"		type=\""+inputObject[i].type+"\" " + 
+							"		value=\""+inputObject[i].defaultValue+"\" " ;
+				if(inputObject[i].type == "number"){
+					content +=	"	max=\""+inputObject[i].prop.max+"\" " + 
+								"	min=\""+inputObject[i].prop.min+"\" " ;
+				}
+				content += 	">"; 
 			}
 		}
 		$("#alertContent").html(content);
-		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
+		$("#alertAction").html(	"<button class=\"wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + "\" onclick=\""+nextAction+"\">" + 
 									"確認" + 
 								"</button>" + 
-								"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='CloseHiddenPopupInfo()'>" + 
+								"<button class=\"wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + "\" onclick=\"CloseHiddenPopupInfo()\">" + 
 									"取消" + 
 								"</button>");
 	}else{
 		$("#alertContent").html(content);
-		$("#alertAction").html(	"<button class='wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + " wolf-margin-x' onclick='"+nextAction+"'>" + 
+		$("#alertAction").html(	"<button class=\"wolf-btn w3-btn w3-round-large w3-pale-" + color + " w3-border-" + color + "\" onclick=\""+nextAction+"\">" + 
 									"關閉" + 
 								"</button>");
 	}
@@ -166,7 +178,7 @@ function ShowLog(nextAction){
 	}
 	$("#logAction").html(	
 		"<i class='wolf-btn-close bi bi-x-circle-fill' onclick='"+nextAction+"'></i>" + 
-		"<button class='wolf-btn w3-btn w3-round-large w3-pale-blue w3-border-blue wolf-margin-x' onclick='"+nextAction+"'>" +
+		"<button class='wolf-btn w3-btn w3-round-large w3-pale-blue w3-border-blue' onclick='"+nextAction+"'>" +
 		actionDesc + 
 		"</button>"
 	);
@@ -185,12 +197,16 @@ function CheckAction(action){
 				id: 'reConfirmNumber',
 				type: 'number',
 				desc: '玩家號碼',
-				defaultValue: ''
+				defaultValue: '',
+				prop: {
+					max: totalPlayer,
+					min: 1
+					}
 			}];
 			ShowAlert(	"question", 
 						"確認身份", 
-						"請輸入需重新確認身份號碼", 
-						"confirmRole($(\"#reConfirmNumber\").val())", 
+						"請輸入需重新確認身份號碼<br/>", 
+						"confirmRole($(\'#reConfirmNumber\').val())", 
 						inputObject);
 			break;
 		default:
@@ -200,11 +216,11 @@ function CheckAction(action){
 function CreateButton(onclickfn, icon, display, hover){
 	var btn = 	"<span class='wolf-tag w3-medium' onclick='ShowHoverTag($(this))' ondblclick='"+onclickfn+"' >";
 	if(icon != null)
-		btn += 		"<i class='bi "+icon+" wolf-btn w3-btn w3-circle'></i>";
+		btn += 		"<i class='bi "+icon+" wolf-btn w3-btn'></i>";
 	if(display != null)
 		btn += 		"<span style=\"\">"+display+"</span>";
 	if(hover != null)
-		btn += 		"<span class=\"wolf-hovertag\"><b>"+hover+"</b></span>";
+		btn += 		"<span class=\"wolf-hovertag\">"+hover+"</span>";
 		btn += 	"</span>";
 	return btn;
 }
@@ -219,5 +235,5 @@ function ShowHoverTag(e){
 	}else{
 		tag.css("display", "block");
 	}
-	setTimeout(function(){  tag.css("display", "none"); }, 3000); // 1000ms = 1s
+	setTimeout(function(){  tag.css("display", "none"); }, 2000); // 1000ms = 1s
 }

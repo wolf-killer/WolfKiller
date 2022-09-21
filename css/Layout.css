@@ -47,24 +47,20 @@ body {
 	background-color: rgba(162, 255, 255, 0.7) !important;
 	color: black !important;
 	border: 1px solid rgba(0, 145, 145) !important; 
-	padding: 4px 8px !important;
+	padding: 1px 8px !important;
 	border-radius: 50%;
 }
 .wolf-btn-selected{
 	background-color: rgba(162, 255, 255, 0.7) !important;
 	color: black !important;
 	border: 2px solid rgba(145, 0, 0) !important; 
-	padding: 4px 8px !important;
+	padding: 1px 8px !important;
 }
 .wolf-btn-close{
 	position: absolute;
 	right: 10px;
 	top: 10px;	
 	z-index:99;
-}
-.wolf-margin-x{
-	margin-left: 16px !important;
-	margin-right: 16px !important;
 }
 .wolf-tag{
 	background-color: #0000; 
@@ -80,7 +76,7 @@ body {
 	position: absolute;
 	width: max-content;
 	top: -15px;
-    left: -5px;
+    left: -15%;
 }
 /*
 .wolf-bar{
@@ -107,12 +103,16 @@ body {
 	background-color: rgba(40, 215, 215, 0.59);
 	width: 100%; 
 }
+.wolf-table-info > .wolf-menu{
+	width: 100%;
+	z-index: 2; 	
+}
 .wolf-info-desc{
 	border-bottom: 1px solid #00435c!important;
 	font-weight: bolder;
 }
 .wolf-menu{
-	width: 100%;
+	width: 40%;
 	z-index: 2; 	
 }
 .wolf-menu > .wolf-btn{
