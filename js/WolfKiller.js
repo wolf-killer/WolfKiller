@@ -79,37 +79,39 @@ $(document).on("click", '.playerButton', function(temp){
 		if(player[selectPlayer] == "GhostWolf"){
 			if(ghostReverse == 0 || ghostReverse == noOfNight){
 				ghostReverse = noOfNight;
-				log += "<tr><td>"+translate("Hunter")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]失敗<br/>惡靈騎士不能死於夜晚</td></tr>";
-				$(".info").html( "遊戲繼續" );	
+				dayLog += "<tr><td>"+translate("Hunter")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]失敗<br/>惡靈騎士不能死於夜晚</td></tr>";
+				$(".wolf-info-desc").html("遊戲繼續～"); 
+				$(".wolf-info-action").html("");
 				action = "";
 				return;
 			}else{
-				log += "<tr><td>"+translate("Hunter")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]<br/>惡靈騎士已於第"+translate(ghostReverse)+"晚使用反傷技能</td></tr>";
-				killPlayer(selectPlayer, false, false, false)
+				dayLog += "<tr><td>"+translate("Hunter")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]<br/>惡靈騎士已於第"+translate(ghostReverse)+"晚使用反傷技能</td></tr>";
+				checkDayResult(selectPlayer, "byHunter");
 			}
 		}else{
-			log += "<tr><td>"+translate("Hunter")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]</td></tr>";
-			killPlayer(selectPlayer, false, false, false);
+			dayLog += "<tr><td>"+translate("Hunter")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]</td></tr>";
+			checkDayResult(selectPlayer, "byHunter");
 		}
 	}else if(nextAction == "bringByWolfKing"){
 		if(player[selectPlayer] == "GhostWolf"){
 			if(ghostReverse == 0 || ghostReverse == noOfNight){
 				ghostReverse = noOfNight;
-				log += "<tr><td>"+translate("WolfKing")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]失敗<br/>惡靈騎士不能死於夜晚</td></tr>";
-				$(".info").html( "遊戲繼續" );	
+				dayLog += "<tr><td>"+translate("WolfKing")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]失敗<br/>惡靈騎士不能死於夜晚</td></tr>";
+				$(".wolf-info-desc").html("遊戲繼續～"); 
+				$(".wolf-info-action").html("");
 				nextAction = "";
 				return;
 			}else{
-				log += "<tr><td>"+translate("WolfKing")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]<br/>惡靈騎士已於第"+translate(ghostReverse)+"晚使用反傷技能</td></tr>";
-				killPlayer(selectPlayer, false, false, false)
+				dayLog += "<tr><td>"+translate("WolfKing")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]<br/>惡靈騎士已於第"+translate(ghostReverse)+"晚使用反傷技能</td></tr>";
+				checkDayResult(selectPlayer, "byWolfKing");
 			}
 		}else{
-			log += "<tr><td>"+translate("WolfKing")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]</td></tr>";
-			killPlayer(selectPlayer, false, false, false);
+			dayLog += "<tr><td>"+translate("WolfKing")+"</td><td>帶"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]</td></tr>";
+			checkDayResult(selectPlayer, "byWolfKing");
 		}
 	}else if(nextAction == "killOther"){
-		log += "<tr><td>公投</td><td>"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]</td></tr>";
-		killPlayer(selectPlayer, false, false, false);
+		dayLog += "<tr><td>公投</td><td>"+translate(selectPlayer)+"號玩家["+translate(player[selectPlayer])+"]</td></tr>";
+		checkDayResult(selectPlayer, false, false, false);
 	}else if(nextAction == "killSelf"){
 		killSelfAction(selectPlayer);
 	}else if(nextAction == "checkRole"){
@@ -471,6 +473,9 @@ function wolfAction(){
 	$(".wolf-info-action").html("直接揀選號碼 或 " + 
 								CreateButton("wolfCloseEye(0)", "bi-person-x-fill", "不殺人")
 							);
+	$(".wolf-info").append("<div class=\"wolf-btn-temp w3-display-right\">" + 
+							CreateButton("wolfCloseEye(0)", "bi-person-x-fill", null, null, "xxlarge") + 
+							"</div>") ;
 	$(".alivePlayer").prop("disabled", false); 
 }
 function wolfCloseEye(noOfPlayer){
@@ -487,6 +492,7 @@ function wolfCloseEye(noOfPlayer){
 	wolfCloseEyes.play(); 
 	$(".alivePlayer").prop("disabled", true); 
 	$(".playerImg").attr("src",imagePlayer); 
+	$(".wolf-btn-temp").remove();
 	$(".wolf-info-desc").html("狼人！請閉眼！"); 
 	$(".wolf-info-action").html("");
 	checkNextNightAction();
@@ -502,12 +508,12 @@ function witchAction(){
 			if(wolfKill == 0){
 				$(".wolf-info-desc").html("女巫！今晚沒有人被殺！"); 
 				$(".wolf-info-action").html("請等一下！");
-				setTimeout(function(){  witchHelp(false) }, 5000);
+				setTimeout(function(){  witchHelp(false) }, 8000);
 			}else if(wolfKill == index && !witchCanSaveHimself){
 				$("#killImg"+wolfKill).show();
 				$(".wolf-info-desc").html("女巫！今晚<strong style='color:red'>"+translate(wolfKill)+"號玩家</strong>被殺！"); 
 				$(".wolf-info-action").html("請等一下！");
-				setTimeout(function(){  witchHelp(false) }, 5000);
+				setTimeout(function(){  witchHelp(false) }, 8000);
 			}else{
 				$("#killImg"+wolfKill).show();
 				$(".wolf-info-desc").html("女巫！今晚<strong style='color:red'>"+translate(wolfKill)+"號玩家</strong>被殺！"); 
@@ -515,21 +521,26 @@ function witchAction(){
 									CreateButton("witchHelp(false)", "bi-emoji-dizzy-fill", "不救人") + 
 									CreateButton("witchHelp(true)", "bi-emoji-smile-fill", "救人") 
 									);
+				$(".wolf-info").append("<div class=\"wolf-btn-temp w3-display-right\">" + 
+									CreateButton("witchHelp(false)", "bi-emoji-dizzy-fill", null, null, "xxlarge") + 
+									CreateButton("witchHelp(true)", "bi-emoji-smile-fill", null, null, "xxlarge") +
+									"</div>") ;
 			}
 		}else{
 			$(".wolf-info-desc").html("女巫！救藥已用！"); 
 			$(".wolf-info-action").html("請等一下！");
-			setTimeout(function(){  witchHelp(false) }, 5000);
+			setTimeout(function(){  witchHelp(false) }, 8000);
 		}
 	}else{
 		$(".wolf-info-desc").html("女巫已死。"); 
 		$(".wolf-info-action").html("請等一下！");
 		dayLog += "<tr><td>女巫</td><td>已死</td><tr>";
-		setTimeout(function(){ witchHelp(false) }, 5000);
+		setTimeout(function(){ witchHelp(false) }, 8000);
 	}
 } 
 function witchHelp(save){
 	$(".killImg").hide();
+	$(".wolf-btn-temp").remove();
 	witchDrug.play();
 	if(save){
 		dayLog += "<tr><td>女巫</td><td>救"+translate(wolfKill)+"號玩家["+translate(player[wolfKill])+"]</td><tr>";
@@ -537,14 +548,21 @@ function witchHelp(save){
 		witchGoodDrug--;
 		$(".wolf-info-desc").html("救藥已用！一晚不能同時使用救藥和毒藥。"); 
 		$(".wolf-info-action").html("請等一下！");
-		setTimeout(function(){ witchCloseEye(0); }, 5000);
+		setTimeout(function(){ witchCloseEye(0); }, 8000);
 	}else{
 		if(witchBadDrug > 0){
 			$(".wolf-info-desc").html("女巫！你今晚要毒誰？"); 
 			$(".wolf-info-action").html("直接揀選號碼 或 " + 
 										CreateButton("witchCloseEye(0)", "bi-x-circle-fill", "不毒")
 									);
+			$(".wolf-info").append("<div class=\"wolf-btn-temp w3-display-right\">" + 
+									CreateButton("witchCloseEye(0)", "bi-x-circle-fill", null, null, "xxlarge") + 
+									"</div>") ;						
 			$(".alivePlayer").prop("disabled", false); 
+		}else{
+			$(".wolf-info-desc").html("毒藥已用！。"); 
+			$(".wolf-info-action").html("請等一下！");
+			setTimeout(function(){ witchCloseEye(0); }, 8000);
 		}
 	}
 	
@@ -558,6 +576,7 @@ function witchCloseEye(noOfPlayer){
 	witchCloseEyes.play();
 	$(".alivePlayer").prop("disabled", true); 
 	$(".playerImg").attr("src",imagePlayer); 
+	$(".wolf-btn-temp").remove();
 	$(".wolf-info-desc").html("女巫！請閉眼！"); 
 	$(".wolf-info-action").html("");
 	checkNextNightAction();
@@ -616,19 +635,18 @@ function endNightTime(){
 	openAllEyes.play();
 	$(".wolf-info-desc").html("天亮請睜眼～"); 
 	$(".wolf-info-action").html("");
-	$(".wolf-menu").show();
 	// ........add button for day action
 	setTimeout(function(){ checkNightResult(); }, 2000); // 1000ms = 1s
 } 
 function checkNightResult(){
+	noOfPlayerDied = [];
 	var wolfKillSuccess = checkWolfKill();
 	var witchKillSuccess = checkWitchKill();
-	if(wolfKillSuccess || checkWitchKill){
+	if(wolfKillSuccess || witchKillSuccess){
 	}else{
 		nextAction = "silentNight";
 	}
 	showResult();
-	
 }
 function checkWolfKill(){
 	if(witchSave && (guardProtect == wolfKill)){
@@ -640,7 +658,6 @@ function checkWolfKill(){
 		wolfKill = 0;
 	}
 	if(wolfKill > 0){
-		noOfPlayerDied.push(wolfKill);
 		return killPlayer(wolfKill, "byWolf");
 	}else{
 		return false;
@@ -653,10 +670,17 @@ function checkWitchKill(){
 		dayLog += "<tr><td>惡靈</td><td>反傷"+translate(witchKill)+"號玩家["+translate("Witch")+"]</td></tr>";
 	}
 	if(witchKill > 0){
-		noOfPlayerDied.push(witchKill);
 		return killPlayer(witchKill, "byWitch");
 	}else{
 		return false;
+	}
+}
+function checkDayResult(noOfPlayer, killMethod){
+	noOfPlayerDied = [];
+	nextAction = "";
+	var success = killPlayer(noOfPlayer, killMethod);
+	if(success){
+		showResult();
 	}
 }
 function killPlayer(noOfPlayer, killMethod){
@@ -667,6 +691,7 @@ function killPlayer(noOfPlayer, killMethod){
 	$("#playerButton"+noOfPlayer).addClass("diedPlayer");
 	$("#diedImg"+noOfPlayer).show();
 	$("#killImg"+noOfPlayer).show();
+	$(".wolf-btn-temp").remove();
 	$(".diedPlayer").prop("disabled", true); 
 	//update alivePlayerList
 	var diedPlayerRule = player[noOfPlayer]
@@ -682,6 +707,7 @@ function killPlayer(noOfPlayer, killMethod){
 	if((diedPlayerRule == "WolfKing" || diedPlayerRule == "Hunter") && (killMethod != "byWitch")){
 		nextAction = "bringBy" + diedPlayerRule; // bringByWolfKing || bringByHunter
 	}
+	noOfPlayerDied.push(noOfPlayer);
 	return true;
 }
 function showResult(){
@@ -690,7 +716,6 @@ function showResult(){
 	if(nextAction == "silentNight"){
 		//get random number
 		var no = Math.floor(Math.random() * (totalPlayer - 0)) + 0;
-		console.log(no);
 		while(!alivePlayer.includes(player[no]) || no == 0){
 			no++;
 			if(no > totalPlayer){
@@ -708,10 +733,27 @@ function showResult(){
 		desc += "死了～"
 		$(".wolf-info-desc").html(desc); 
 		if(nextAction == "bringByWolfKing"){
-			$(".wolf-info-action").html("啟動技能！你要帶走誰？");
+			$(".wolf-info-action").html("[" + translate(player.indexOf("WolfKing")) + "號玩家] 啟動技能！你要帶走誰？");
+			$(".wolf-info").append("<div class=\"wolf-btn-temp w3-display-right\">" + 
+									CreateButton("skipAction()", "bi-x-circle-fill", null, "不帶", "xxlarge") + 
+									"</div>") ;						
+			$(".alivePlayer").prop("disabled", false); 
+		}else if(nextAction == "bringByHunter"){
+			$(".wolf-info-action").html("[" + translate(player.indexOf("Hunter")) + "號玩家] 啟動技能！你要帶走誰？");
+			$(".wolf-info").append("<div class=\"wolf-btn-temp w3-display-right\">" + 
+									CreateButton("skipAction()", "bi-x-circle-fill", null, "不帶", "xxlarge") + 
+									"</div>") ;						
 			$(".alivePlayer").prop("disabled", false); 
 		}else{
 			$(".wolf-info-action").html("下一位玩家開始發言");
+			$(".wolf-btn-temp").remove();
+			$(".wolf-menu").show();
 		}
 	}
+}
+function skipAction(){
+	nextAction = "";
+	$(".wolf-info-desc").html("遊戲繼續～"); 
+	$(".wolf-info-action").html("下一位玩家開始發言");
+	$(".wolf-btn-temp").remove();
 }

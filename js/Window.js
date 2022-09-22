@@ -74,7 +74,7 @@ function setPlayerSeat(manualSetCol){
 			"					name=\""+x+"\"" +
 			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
 			"					<img id=\"playerImg"+x+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"transform:rotate(90deg);\"> " +
-			"					<img id=\"diedImg"+x+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
+			"					<img id=\"diedImg"+x+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"transform:translate(-50%,-50%) rotate(90deg);\"> " +
 			"					<img id=\"killImg"+x+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
 			"					<button " +
 			"						id=\"playerButton"+x+"\" " +
@@ -98,7 +98,7 @@ function setPlayerSeat(manualSetCol){
 			"					name=\""+y+"\"" +
 			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
 			"					<img id=\"playerImg"+y+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"transform:rotate(-90deg);\"> " +
-			"					<img id=\"diedImg"+y+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
+			"					<img id=\"diedImg"+y+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"transform:translate(-50%,-50%) rotate(-90deg);\"> " +
 			"					<img id=\"killImg"+y+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
 			"					<button " +
 			"						id=\"playerButton"+y+"\" " +
@@ -121,7 +121,7 @@ function setPlayerSeat(manualSetCol){
 			"					name=\""+x+"\"" +
 			"					class=\"playerCard playerButton alivePlayer wolf-screenseat w3-display-container\"> " +
 			"					<img id=\"playerImg"+x+"\" class=\"playerImg\" src=\"./image/actor/Player.png\" style=\"transform:rotate(90deg);\"> " +
-			"					<img id=\"diedImg"+x+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"\"> " +
+			"					<img id=\"diedImg"+x+"\" class=\"diedImg\" src=\"./image/Died.png\" style=\"transform: translate(-50%,-50%) rotate(90deg);\"> " +
 			"					<img id=\"killImg"+x+"\" class=\"killImg\" src=\"./image/Kill.png\" style=\"\"> " +
 			"					<button " +
 			"						id=\"playerButton"+x+"\" " +

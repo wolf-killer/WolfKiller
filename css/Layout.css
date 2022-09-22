@@ -62,6 +62,10 @@ body {
 	top: 10px;	
 	z-index:99;
 }
+.wolf-btn-temp{
+	right: 5% !important;
+	z-index:50 !important;
+}
 .wolf-tag{
 	background-color: #0000; 
     color: #00435c; 
@@ -84,11 +88,11 @@ body {
 	text-align: center;
 	z-index: 2; 
 	color: #00435c !important;
-	line-height: 120%;
 }
 .wolf-table-info{
 	background-color: rgba(40, 215, 215, 0.59);
 	width: 100%; 
+	padding-top: 8px;
 }
 .wolf-table-info > .wolf-menu{
 	width: 100%;
@@ -97,6 +101,7 @@ body {
 .wolf-info-desc{
 	border-bottom: 1px solid #00435c!important;
 	font-weight: bolder;
+	z-index:4 !important;
 }
 .wolf-menu{
 	width: 40%;

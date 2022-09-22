@@ -190,8 +190,9 @@ function GetRandom(){
 	window.crypto.getRandomValues(randomBuffer);
 	return randomBuffer[0] / (0xFFFFFFFF + 1);
 }
-function CreateButton(onclickfn, icon, display, hover){
-	var btn = 	"<span class='wolf-tag w3-medium btn-"+icon+"' onclick='ShowHoverTag($(this))' ondblclick='"+onclickfn+"' >";
+function CreateButton(onclickfn, icon, display, hover, size){
+	size = size==null? "medium":size;
+	var btn = 	"<span class='wolf-tag w3-"+size+" btn-"+icon+"' onclick='ShowHoverTag($(this))' ondblclick='"+onclickfn+"' >";
 	if(icon != null)
 		btn += 		"<i class='bi "+icon+" wolf-btn w3-btn'></i>";
 	if(display != null)

@@ -129,19 +129,19 @@ function getActorList(){
 	$("#GodActorSection").html("");
 	$("#WolfActorSection").html("");
 	for(var i=0; i<allVillager.length; i++){
-		$("#VillagerActorSection").append( 	"<div class='actorCard w3-container s3 m2 l1 w3-col w3-center w3-col-middle' style='padding: 0px;' data-long-press-delay='500'>" + 
+		$("#VillagerActorSection").append( 	"<div class='actorCard w3-container s3 m3 l1 w3-col w3-center w3-col-middle' style='padding: 0px;' data-long-press-delay='500'>" + 
 											"	<img id='actor"+ allVillager[i] +"' class='actorImg' src='./image/actor/"+ allVillager[i] +".png' name='"+ allVillager[i] +"'> " +
 											"	<p id='actor"+ allVillager[i] +"Count' name='actor"+ allVillager[i] +"Count' class='actorCount w3-border w3-round-xxlarge'>0</p>" +
 											"</div>");	
 	}
 	for(var i=0; i<allGod.length; i++){
-		$("#GodActorSection").append( 	"<div class='actorCard w3-container s3 m2 l1 w3-col w3-center w3-col-middle' style='padding: 0px;' data-long-press-delay='500'>" + 
+		$("#GodActorSection").append( 	"<div class='actorCard w3-container s3 m3 l1 w3-col w3-center w3-col-middle' style='padding: 0px;' data-long-press-delay='500'>" + 
 											"	<img id='actor"+ allGod[i] +"' class='actorImg' src='./image/actor/"+ allGod[i] +".png' name='"+ allGod[i] +"'> " +
 											"	<p id='actor"+ allGod[i] +"Count' name='actor"+ allGod[i] +"Count' class='actorCount w3-border w3-round-xxlarge'>0</p>" +
 											"</div>");	
 	}
 	for(var i=0; i<allWolf.length; i++){
-		$("#WolfActorSection").append( 	"<div class='actorCard w3-container s3 m2 l1 w3-col w3-center w3-col-middle' style='padding: 0px;' data-long-press-delay='500'>" + 
+		$("#WolfActorSection").append( 	"<div class='actorCard w3-container s3 m3 l1 w3-col w3-center w3-col-middle' style='padding: 0px;' data-long-press-delay='500'>" + 
 											"	<img id='actor"+ allWolf[i] +"' class='actorImg' src='./image/actor/"+ allWolf[i] +".png' name='"+ allWolf[i] +"'> " +
 											"	<p id='actor"+ allWolf[i] +"Count' name='actor"+ allWolf[i] +"Count' class='actorCount w3-border w3-round-xxlarge'>0</p>" +
 											"</div>");	
