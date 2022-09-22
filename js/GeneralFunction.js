@@ -190,31 +190,8 @@ function GetRandom(){
 	window.crypto.getRandomValues(randomBuffer);
 	return randomBuffer[0] / (0xFFFFFFFF + 1);
 }
-function CheckAction(action){
-	switch(action){
-		case "confirmRole":
-			var inputObject = [{
-				id: 'reConfirmNumber',
-				type: 'number',
-				desc: '玩家號碼',
-				defaultValue: '',
-				prop: {
-					max: totalPlayer,
-					min: 1
-					}
-			}];
-			ShowAlert(	"question", 
-						"確認身份", 
-						"請輸入需重新確認身份號碼<br/>", 
-						"confirmRole($(\'#reConfirmNumber\').val())", 
-						inputObject);
-			break;
-		default:
-			break;
-	}
-}
 function CreateButton(onclickfn, icon, display, hover){
-	var btn = 	"<span class='wolf-tag w3-medium' onclick='ShowHoverTag($(this))' ondblclick='"+onclickfn+"' >";
+	var btn = 	"<span class='wolf-tag w3-medium btn-"+icon+"' onclick='ShowHoverTag($(this))' ondblclick='"+onclickfn+"' >";
 	if(icon != null)
 		btn += 		"<i class='bi "+icon+" wolf-btn w3-btn'></i>";
 	if(display != null)
@@ -223,6 +200,11 @@ function CreateButton(onclickfn, icon, display, hover){
 		btn += 		"<span class=\"wolf-hovertag\">"+hover+"</span>";
 		btn += 	"</span>";
 	return btn;
+}
+function RemoveButton(iconList){
+	for(let i=0; i< iconList.length; i++){
+		$("."+iconList[i]).remove();
+	}
 }
 function ShowHoverTag(e){
 	var tag = $(e.context.querySelector(".wolf-hovertag"));
