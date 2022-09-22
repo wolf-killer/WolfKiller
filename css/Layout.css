@@ -73,25 +73,12 @@ body {
 }
 .wolf-hovertag{
 	display: none;
+	color: white;
 	position: absolute;
 	width: max-content;
 	top: -15px;
     left: -15%;
 }
-/*
-.wolf-bar{
-	height: 22px;
-	z-index: 5;
-}
-.wolf-bar-item{
-	padding: 2px 8px;
-    float: left;
-    width: auto;
-    border: none;
-    display: block;
-    outline: 0;
-}
-*/
 .wolf-info{
 	padding: 2px;
 	text-align: center;
@@ -210,39 +197,6 @@ body {
 	position: absolute; 
 	z-index: 10;
 }
-.ActionPopup{
-	display: none; /* Hidden by default */
-	position: absolute !important; 
-	transform: translate(-50%,0%);
-	padding: 10px !important;
-	top: 0; 
-	left: 50%;
-	z-index:4;
-}
-
-
-
-
-/*
-#logDiv{
-	background-color: #55B1D6;	
-	width:90%; 
-	padding: 10px;
-	position: absolute; 
-	top: 5%; 
-	left: 5%;
-	z-index:99;
-}
-#infoDiv{
-	background-color: #55B1D6;	
-	width:90%; 
-	padding: 20px;
-	position: absolute; 
-	top: 5%; 
-	left: 5%;
-	z-index:99;
-}
-*/
 .playerImg{
 	width:100%; 
 	position: relative; 
@@ -253,15 +207,16 @@ body {
 .diedImg{
 	height: 50px;
 	width:50%;
-	z-index:2; 
+	z-index:3; 
 	position: absolute; 
-	right: 0; 
-	bottom: 0; 
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 	display: none;
 }
 .killImg{
 	width:100%; 
-	z-index:2; 
+	z-index:3; 
 	position: absolute; 
 	top: 0; 
 	left: 0; 
@@ -305,6 +260,11 @@ body {
 	top: 0; 
 	left: 0;
 }
+.alivePlayer{
+	cursor: pointer;
+}
+
+/***/
 .centerMenu{
 	background-color: #ffffff;
 	color: #344850;
