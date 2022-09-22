@@ -50,9 +50,9 @@ function setPlayerSeat(manualSetCol){
 		if($("#FixScreen").find("div.wolf-info").length < 1)
 			$("#FixScreen").append( 
 				"<div class=\"wolf-table-info w3-display-bottommiddle\">" + 
-				"<div class=\"wolf-info w3-xlarge\" style=\"margin-bottom: 10px;\" >" + 
-				"	<span class=\"wolf-info-desc\"></span><br/>" + 
-				"	<span class=\"wolf-info-action\"></span>" + 
+				"<div class=\"wolf-info\" style=\"margin-bottom: 10px;\" >" + 
+				"	<span class=\"wolf-info-desc w3-xlarge\"></span><br/>" + 
+				"	<span class=\"wolf-info-action w3-medium\"></span>" + 
 				"</div>" + 
 				"<div class=\"wolf-menu w3-small w3-center\" "+
 				"		style=\"\"></div>" + 
@@ -80,7 +80,7 @@ function setPlayerSeat(manualSetCol){
 			"						id=\"playerButton"+x+"\" " +
 			"						name=\""+x+"\" " +
 			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right w3-large\"" +
-			"						style=\"transform: translate(0%,-50%) rotate(-90deg);\"> " +
+			"						style=\"width: 36px; transform: translate(50px,-50%) rotate(-90deg);\"> " +
 			"						"+ x +
 			"					</button> " +
 			"				</div> " +
@@ -104,7 +104,7 @@ function setPlayerSeat(manualSetCol){
 			"						id=\"playerButton"+y+"\" " +
 			"						name=\""+y+"\" " +
 			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-left w3-large\" " +
-			"						style=\"transform: translate(0%,-50%) rotate(90deg);\"> " +
+			"						style=\"width: 36px; transform: translate(-50px,-50%) rotate(90deg);\"> " +
 			"						"+ y +
 			"					</button> " +
 			"				</div> " +
@@ -127,7 +127,7 @@ function setPlayerSeat(manualSetCol){
 			"						id=\"playerButton"+x+"\" " +
 			"						name=\""+x+"\" " +
 			"						class=\"playerButton alivePlayer w3-circle w3-black w3-display-right w3-large\"" +
-			"						style=\"transform: translate(0%,-50%) rotate(-90deg);\"> " +
+			"						style=\"transform: translate(50px,-50%) rotate(-90deg);\"> " +
 			"						"+ x +
 			"					</button> " +
 			"				</div> " +
@@ -139,15 +139,15 @@ function setPlayerSeat(manualSetCol){
 		html += 
 			"	</table>";
 		$("#FixScreen").append( 
-			"	<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
+			"	<div class=\"wolf-info w3-display-middle w3-center\" " + 
 			"		style=\"width:" + setHeight + "px; transform: translate(-54%,-50%) rotate(90deg);\">" +
-			"		<span class=\"wolf-info-desc\"></span><br/>" + 
-			"		<span class=\"wolf-info-action\"></span>" + 
+			"		<span class=\"wolf-info-desc w3-xlarge\"></span><br/>" + 
+			"		<span class=\"wolf-info-action w3-medium\"></span>" + 
 			"	</div>" + 
-			"	<div class=\"wolf-info w3-display-middle w3-xlarge w3-center\" " + 
+			"	<div class=\"wolf-info w3-display-middle w3-center\" " + 
 			"		style=\"width:" + setHeight + "px; transform: translate(-46%,-50%) rotate(-90deg);\">" +
-			"		<span class=\"wolf-info-desc\"></span><br/>" + 
-			"		<span class=\"wolf-info-action\"></span>" + 
+			"		<span class=\"wolf-info-desc w3-xlarge\"></span><br/>" + 
+			"		<span class=\"wolf-info-action w3-medium\"></span>" + 
 			"	</div>" + 
 			"	<div class=\"wolf-menu w3-display-topmiddle w3-small w3-center\" " + 
 			"		style=\"transform: translate(-50%,0%) rotate(180deg);\"></div>" + 
