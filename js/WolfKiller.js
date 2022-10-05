@@ -381,6 +381,7 @@ function showAllRole(pw, keep){
 	}
 }
 function startNightTime(){
+	$(".playerImg").removeClass("confirming");
 	closeAllEyes.play();
 	//set default
 	wolfKill = 0;
